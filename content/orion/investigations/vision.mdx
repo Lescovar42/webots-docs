@@ -1,0 +1,27 @@
+# Orion camera and YOLO interface review
+
+This review covers Orion's camera YAML, selected Python detector ranges, the detector README and a follower interface. Abbreviated paths and ambiguous multi-range citations have been replaced by exact source references. It does not establish a working end-to-end detection-to-motion pipeline.
+
+## Camera configuration
+
+The reviewed YAML selects `/dev/video0`, 30 FPS, `mmap`, a `cam_link` frame, `mjpeg2rgb`, 1280×720 resolution and a package camera-info URL. It also declares exposure, focus and white-balance settings. These are configuration values, not measured camera performance or verified intrinsic calibration. Check the actual device and calibration file for this robot. [source/src/ROBOTIS-OP3-Demo/op3_ball_detector/config/camera_param.yaml:L1-L23](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/src/ROBOTIS-OP3-Demo/op3_ball_detector/config/camera_param.yaml#L1-L23)
+
+## Detector inputs and control
+
+The Python source describes a YOLO replacement for the circle detector and declares model/task, compressed-input and confidence parameters in the sampled constructor. The README lists PyTorch, ONNX and OpenVINO entry points; those are documentation claims, not compatibility or speed tests performed here. [source/src/ROBOTIS-OP3-Demo/op3_ball_detector/scripts/yolo_ball_detector.py:L20-L75](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/src/ROBOTIS-OP3-Demo/op3_ball_detector/scripts/yolo_ball_detector.py#L20-L75) [source/src/ROBOTIS-OP3-Demo/op3_ball_detector/README_YOLO.md:L1-L19](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/src/ROBOTIS-OP3-Demo/op3_ball_detector/README_YOLO.md#L1-L19)
+
+The code creates circle and optional image publishers, chooses compressed or raw image subscriptions, subscribes to an enable topic, and creates a timer for processing the latest image. The sampled image callbacks convert frames to BGR and store the latest frame/header under a lock. This describes the input contract and buffering, not measured latency or absence of dropped frames. [source/src/ROBOTIS-OP3-Demo/op3_ball_detector/scripts/yolo_ball_detector.py:L110-L141](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/src/ROBOTIS-OP3-Demo/op3_ball_detector/scripts/yolo_ball_detector.py#L110-L141) [source/src/ROBOTIS-OP3-Demo/op3_ball_detector/scripts/yolo_ball_detector.py:L221-L243](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/src/ROBOTIS-OP3-Demo/op3_ball_detector/scripts/yolo_ball_detector.py#L221-L243)
+
+The class-name resolver returns `None` when there are no target names or none match; in the latter case it explicitly logs a fallback to treating all detected classes as balls. Model class labels and target configuration therefore need checking together. [source/src/ROBOTIS-OP3-Demo/op3_ball_detector/scripts/yolo_ball_detector.py:L194-L216](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/src/ROBOTIS-OP3-Demo/op3_ball_detector/scripts/yolo_ball_detector.py#L194-L216)
+
+## Coordinate and radius contract
+
+The inspected extractor converts box centers to `[-1,1]` coordinates, computes radius as the mean half-side in **pixels**, and sorts by descending radius. The source docstring and README also describe a pixel-valued circle radius. Do not reinterpret this as a normalized radius merely because center coordinates are normalized. [source/src/ROBOTIS-OP3-Demo/op3_ball_detector/scripts/yolo_ball_detector.py:L20-L29](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/src/ROBOTIS-OP3-Demo/op3_ball_detector/scripts/yolo_ball_detector.py#L20-L29) [source/src/ROBOTIS-OP3-Demo/op3_ball_detector/scripts/yolo_ball_detector.py:L291-L318](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/src/ROBOTIS-OP3-Demo/op3_ball_detector/scripts/yolo_ball_detector.py#L291-L318) [source/src/ROBOTIS-OP3-Demo/op3_ball_detector/README_YOLO.md:L21-L31](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/src/ROBOTIS-OP3-Demo/op3_ball_detector/README_YOLO.md#L21-L31)
+
+`BallFollower` declares `processFollowing(x_angle, y_angle, ball_size)` and a separate injected ROS node. That interface does not show how image coordinates are converted into angles or how detections reach it. The README's “drop-in” statement remains an integration claim requiring runtime verification. [source/src/ROBOTIS-OP3-Demo/op3_demo/include/op3_demo/ball_follower.h:L40-L75](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/src/ROBOTIS-OP3-Demo/op3_demo/include/op3_demo/ball_follower.h#L40-L75)
+
+## Remaining checks
+
+Verify topic remapping, calibration, model class names, selected backend and consumer units using Orion's own launch/configuration. README dependency and NumPy-compatibility notes are snapshot guidance, not current package-version recommendations. [source/src/ROBOTIS-OP3-Demo/op3_ball_detector/README_YOLO.md:L33-L66](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/src/ROBOTIS-OP3-Demo/op3_ball_detector/README_YOLO.md#L33-L66)
+
+No model weights, camera stream, detector, follower or robot action was run. No throughput or detection-quality claim is established by this review.

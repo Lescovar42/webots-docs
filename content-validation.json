@@ -1,0 +1,862 @@
+{
+  "markdown_pages": 57,
+  "source_files": 65,
+  "manifest_files_verified": 64,
+  "manifest_failures": [],
+  "local_links_rewritten": 167,
+  "unresolved_links": [],
+  "reference_definitions_rewritten": 5,
+  "anchor_aliases_fixed": [
+    {
+      "source": "Orion/focus-guide-differences.md",
+      "from": "#sources",
+      "to": "#6-sources"
+    }
+  ],
+  "prose_characters_escaped": {
+    "{": 0,
+    "}": 0,
+    "<": 1,
+    ">": 0
+  },
+  "external_url_occurrences_preserved": 867,
+  "external_url_mismatches": [],
+  "link_mappings": [
+    {
+      "source": "Alphonse/focus-difference-other.md",
+      "from": "../BRANCH-COMPARISON.md",
+      "to": "/branch-comparison"
+    },
+    {
+      "source": "Alphonse/focus-difference-other.md",
+      "from": "focus-guide-differences.md",
+      "to": "/alphonse/settings"
+    },
+    {
+      "source": "Alphonse/focus-difference-other.md",
+      "from": "focus-guide-architecture.md",
+      "to": "/alphonse/architecture"
+    },
+    {
+      "source": "Alphonse/focus-difference-setup.md",
+      "from": "../BRANCH-COMPARISON.md",
+      "to": "/branch-comparison"
+    },
+    {
+      "source": "Alphonse/focus-difference-setup.md",
+      "from": "focus-guide-setup.md",
+      "to": "/alphonse/setup"
+    },
+    {
+      "source": "Alphonse/focus-difference-setup.md",
+      "from": "focus-guide-architecture.md",
+      "to": "/alphonse/architecture"
+    },
+    {
+      "source": "Alphonse/focus-guide-architecture.md",
+      "from": "../Shared/focus-shared-framework.md",
+      "to": "/shared/framework"
+    },
+    {
+      "source": "Alphonse/focus-guide-architecture.md",
+      "from": "focus-guide-differences.md",
+      "to": "/alphonse/settings"
+    },
+    {
+      "source": "Alphonse/focus-guide-architecture.md",
+      "from": "../FOCUSED-GUIDES.md",
+      "to": "/guides"
+    },
+    {
+      "source": "Alphonse/focus-guide-differences.md",
+      "from": "focus-difference-other.md",
+      "to": "/alphonse/investigations/other"
+    },
+    {
+      "source": "Alphonse/focus-guide-differences.md",
+      "from": "focus-guide-architecture.md",
+      "to": "/alphonse/architecture"
+    },
+    {
+      "source": "Alphonse/focus-guide-operation.md",
+      "from": "../Shared/focus-shared-manager.md",
+      "to": "/shared/manager"
+    },
+    {
+      "source": "Alphonse/focus-guide-operation.md",
+      "from": "../Shared/focus-shared-walking.md",
+      "to": "/shared/walking"
+    },
+    {
+      "source": "Alphonse/focus-guide-operation.md",
+      "from": "../Shared/focus-shared-teleop.md",
+      "to": "/shared/teleop"
+    },
+    {
+      "source": "Alphonse/focus-guide-operation.md",
+      "from": "../Shared/focus-shared-webots.md",
+      "to": "/shared/webots"
+    },
+    {
+      "source": "Alphonse/focus-guide-operation.md",
+      "from": "../Shared/focus-shared-localization.md",
+      "to": "/shared/localization"
+    },
+    {
+      "source": "Alphonse/focus-guide-setup.md",
+      "from": "../Shared/README.md",
+      "to": "/shared"
+    },
+    {
+      "source": "Alphonse/focus-guide-setup.md",
+      "from": "../Shared/focus-shared-workspace.md",
+      "to": "/shared/workspace"
+    },
+    {
+      "source": "Alphonse/focus-guide-setup.md",
+      "from": "../FOCUSED-GUIDES.md",
+      "to": "/guides"
+    },
+    {
+      "source": "Alphonse/README.md",
+      "from": "focus-guide-setup.md",
+      "to": "/alphonse/setup"
+    },
+    {
+      "source": "Alphonse/README.md",
+      "from": "focus-guide-architecture.md",
+      "to": "/alphonse/architecture"
+    },
+    {
+      "source": "Alphonse/README.md",
+      "from": "focus-guide-operation.md",
+      "to": "/alphonse/operation"
+    },
+    {
+      "source": "Alphonse/README.md",
+      "from": "focus-guide-differences.md",
+      "to": "/alphonse/settings"
+    },
+    {
+      "source": "Alphonse/README.md",
+      "from": "focus-difference-setup.md",
+      "to": "/alphonse/investigations/setup"
+    },
+    {
+      "source": "Alphonse/README.md",
+      "from": "focus-difference-hardware.md",
+      "to": "/alphonse/investigations/hardware"
+    },
+    {
+      "source": "Alphonse/README.md",
+      "from": "focus-difference-motion.md",
+      "to": "/alphonse/investigations/motion"
+    },
+    {
+      "source": "Alphonse/README.md",
+      "from": "focus-difference-vision.md",
+      "to": "/alphonse/investigations/vision"
+    },
+    {
+      "source": "Alphonse/README.md",
+      "from": "focus-difference-navigation.md",
+      "to": "/alphonse/investigations/navigation"
+    },
+    {
+      "source": "Alphonse/README.md",
+      "from": "focus-difference-other.md",
+      "to": "/alphonse/investigations/other"
+    },
+    {
+      "source": "Alphonse/README.md",
+      "from": "../Shared/README.md",
+      "to": "/shared"
+    },
+    {
+      "source": "Alphonse/README.md",
+      "from": "DIFFERENCES.md",
+      "to": "/alphonse/changed-files"
+    },
+    {
+      "source": "Alphonse/README.md",
+      "from": "../README.md",
+      "to": "/"
+    },
+    {
+      "source": "Chronus/focus-difference-other.md",
+      "from": "focus-guide-operation.md",
+      "to": "/chronus/operation"
+    },
+    {
+      "source": "Chronus/focus-difference-other.md",
+      "from": "focus-guide-architecture.md",
+      "to": "/chronus/architecture"
+    },
+    {
+      "source": "Chronus/focus-difference-other.md",
+      "from": "../BRANCH-COMPARISON.md",
+      "to": "/branch-comparison"
+    },
+    {
+      "source": "Chronus/focus-difference-setup.md",
+      "from": "DIFFERENCES.md",
+      "to": "/chronus/changed-files"
+    },
+    {
+      "source": "Chronus/focus-guide-architecture.md",
+      "from": "../Shared/focus-shared-framework.md",
+      "to": "/shared/framework"
+    },
+    {
+      "source": "Chronus/focus-guide-architecture.md",
+      "from": "focus-guide-differences.md",
+      "to": "/chronus/settings"
+    },
+    {
+      "source": "Chronus/focus-guide-architecture.md",
+      "from": "../FOCUSED-GUIDES.md",
+      "to": "/guides"
+    },
+    {
+      "source": "Chronus/focus-guide-differences.md",
+      "from": "focus-guide-architecture.md",
+      "to": "/chronus/architecture"
+    },
+    {
+      "source": "Chronus/focus-guide-differences.md",
+      "from": "focus-guide-operation.md",
+      "to": "/chronus/operation"
+    },
+    {
+      "source": "Chronus/focus-guide-operation.md",
+      "from": "focus-guide-differences.md",
+      "to": "/chronus/settings"
+    },
+    {
+      "source": "Chronus/focus-guide-operation.md",
+      "from": "focus-guide-architecture.md",
+      "to": "/chronus/architecture"
+    },
+    {
+      "source": "Chronus/focus-guide-setup.md",
+      "from": "../Shared/focus-shared-workspace.md",
+      "to": "/shared/workspace"
+    },
+    {
+      "source": "Chronus/focus-guide-setup.md",
+      "from": "../Shared/focus-shared-framework.md",
+      "to": "/shared/framework"
+    },
+    {
+      "source": "Chronus/focus-guide-setup.md",
+      "from": "../Shared/focus-shared-messages.md",
+      "to": "/shared/messages"
+    },
+    {
+      "source": "Chronus/focus-guide-setup.md",
+      "from": "../Shared/focus-shared-manager.md",
+      "to": "/shared/manager"
+    },
+    {
+      "source": "Chronus/focus-guide-setup.md",
+      "from": "../Shared/focus-shared-webots.md",
+      "to": "/shared/webots"
+    },
+    {
+      "source": "Chronus/focus-guide-setup.md",
+      "from": "focus-difference-setup.md",
+      "to": "/chronus/investigations/setup"
+    },
+    {
+      "source": "Chronus/README.md",
+      "from": "focus-guide-setup.md",
+      "to": "/chronus/setup"
+    },
+    {
+      "source": "Chronus/README.md",
+      "from": "focus-guide-architecture.md",
+      "to": "/chronus/architecture"
+    },
+    {
+      "source": "Chronus/README.md",
+      "from": "focus-guide-operation.md",
+      "to": "/chronus/operation"
+    },
+    {
+      "source": "Chronus/README.md",
+      "from": "focus-guide-differences.md",
+      "to": "/chronus/settings"
+    },
+    {
+      "source": "Chronus/README.md",
+      "from": "focus-difference-setup.md",
+      "to": "/chronus/investigations/setup"
+    },
+    {
+      "source": "Chronus/README.md",
+      "from": "focus-difference-hardware.md",
+      "to": "/chronus/investigations/hardware"
+    },
+    {
+      "source": "Chronus/README.md",
+      "from": "focus-difference-motion.md",
+      "to": "/chronus/investigations/motion"
+    },
+    {
+      "source": "Chronus/README.md",
+      "from": "focus-difference-vision.md",
+      "to": "/chronus/investigations/vision"
+    },
+    {
+      "source": "Chronus/README.md",
+      "from": "focus-difference-navigation.md",
+      "to": "/chronus/investigations/navigation"
+    },
+    {
+      "source": "Chronus/README.md",
+      "from": "focus-difference-other.md",
+      "to": "/chronus/investigations/other"
+    },
+    {
+      "source": "Chronus/README.md",
+      "from": "../Shared/README.md",
+      "to": "/shared"
+    },
+    {
+      "source": "Chronus/README.md",
+      "from": "DIFFERENCES.md",
+      "to": "/chronus/changed-files"
+    },
+    {
+      "source": "Chronus/README.md",
+      "from": "../README.md",
+      "to": "/"
+    },
+    {
+      "source": "FOCUSED-GUIDES.md",
+      "from": "README.md",
+      "to": "/"
+    },
+    {
+      "source": "Orion/focus-difference-other.md",
+      "from": "../BRANCH-COMPARISON.md",
+      "to": "/branch-comparison"
+    },
+    {
+      "source": "Orion/focus-difference-other.md",
+      "from": "focus-guide-architecture.md",
+      "to": "/orion/architecture"
+    },
+    {
+      "source": "Orion/focus-difference-other.md",
+      "from": "focus-guide-setup.md",
+      "to": "/orion/setup"
+    },
+    {
+      "source": "Orion/focus-difference-other.md",
+      "from": "focus-guide-differences.md",
+      "to": "/orion/settings"
+    },
+    {
+      "source": "Orion/focus-difference-setup.md",
+      "from": "focus-guide-setup.md",
+      "to": "/orion/setup"
+    },
+    {
+      "source": "Orion/focus-difference-setup.md",
+      "from": "focus-guide-architecture.md",
+      "to": "/orion/architecture"
+    },
+    {
+      "source": "Orion/focus-difference-setup.md",
+      "from": "../BRANCH-COMPARISON.md",
+      "to": "/branch-comparison"
+    },
+    {
+      "source": "Orion/focus-guide-architecture.md",
+      "from": "../Shared/focus-shared-framework.md",
+      "to": "/shared/framework"
+    },
+    {
+      "source": "Orion/focus-guide-architecture.md",
+      "from": "../Shared/focus-shared-manager.md",
+      "to": "/shared/manager"
+    },
+    {
+      "source": "Orion/focus-guide-architecture.md",
+      "from": "../Shared/focus-shared-manager.md",
+      "to": "/shared/manager"
+    },
+    {
+      "source": "Orion/focus-guide-architecture.md",
+      "from": "../Shared/focus-shared-manager.md",
+      "to": "/shared/manager"
+    },
+    {
+      "source": "Orion/focus-guide-architecture.md",
+      "from": "../Shared/focus-shared-manager.md",
+      "to": "/shared/manager"
+    },
+    {
+      "source": "Orion/focus-guide-architecture.md",
+      "from": "../Shared/focus-shared-messages.md",
+      "to": "/shared/messages"
+    },
+    {
+      "source": "Orion/focus-guide-architecture.md",
+      "from": "../Shared/focus-shared-walking.md",
+      "to": "/shared/walking"
+    },
+    {
+      "source": "Orion/focus-guide-architecture.md",
+      "from": "../Shared/focus-shared-manager.md",
+      "to": "/shared/manager"
+    },
+    {
+      "source": "Orion/focus-guide-architecture.md",
+      "from": "../Shared/focus-shared-framework.md",
+      "to": "/shared/framework"
+    },
+    {
+      "source": "Orion/focus-guide-architecture.md",
+      "from": "../Shared/focus-shared-webots.md",
+      "to": "/shared/webots"
+    },
+    {
+      "source": "Orion/focus-guide-architecture.md",
+      "from": "../Shared/focus-shared-framework.md",
+      "to": "/shared/framework"
+    },
+    {
+      "source": "Orion/focus-guide-architecture.md",
+      "from": "../Shared/focus-shared-manager.md",
+      "to": "/shared/manager"
+    },
+    {
+      "source": "Orion/focus-guide-architecture.md",
+      "from": "../Shared/focus-shared-framework.md",
+      "to": "/shared/framework"
+    },
+    {
+      "source": "Orion/focus-guide-architecture.md",
+      "from": "../Shared/focus-shared-messages.md",
+      "to": "/shared/messages"
+    },
+    {
+      "source": "Orion/focus-guide-architecture.md",
+      "from": "../Shared/focus-shared-walking.md",
+      "to": "/shared/walking"
+    },
+    {
+      "source": "Orion/focus-guide-architecture.md",
+      "from": "./DIFFERENCES.md",
+      "to": "/orion/changed-files"
+    },
+    {
+      "source": "Orion/focus-guide-differences.md",
+      "from": "#sources",
+      "to": "#6-sources"
+    },
+    {
+      "source": "Orion/focus-guide-differences.md",
+      "from": "../Shared/focus-shared-workspace.md",
+      "to": "/shared/workspace"
+    },
+    {
+      "source": "Orion/focus-guide-differences.md",
+      "from": "../Shared/focus-shared-framework.md",
+      "to": "/shared/framework"
+    },
+    {
+      "source": "Orion/focus-guide-differences.md",
+      "from": "../Shared/focus-shared-messages.md",
+      "to": "/shared/messages"
+    },
+    {
+      "source": "Orion/focus-guide-differences.md",
+      "from": "../Shared/focus-shared-manager.md",
+      "to": "/shared/manager"
+    },
+    {
+      "source": "Orion/focus-guide-differences.md",
+      "from": "../Shared/focus-shared-walking.md",
+      "to": "/shared/walking"
+    },
+    {
+      "source": "Orion/focus-guide-differences.md",
+      "from": "../Shared/focus-shared-kinematics.md",
+      "to": "/shared/kinematics"
+    },
+    {
+      "source": "Orion/focus-guide-differences.md",
+      "from": "../Shared/focus-shared-webots.md",
+      "to": "/shared/webots"
+    },
+    {
+      "source": "Orion/focus-guide-differences.md",
+      "from": "../Shared/focus-shared-teleop.md",
+      "to": "/shared/teleop"
+    },
+    {
+      "source": "Orion/focus-guide-operation.md",
+      "from": "../Shared/focus-shared-manager.md",
+      "to": "/shared/manager"
+    },
+    {
+      "source": "Orion/focus-guide-operation.md",
+      "from": "../Shared/focus-shared-teleop.md",
+      "to": "/shared/teleop"
+    },
+    {
+      "source": "Orion/focus-guide-operation.md",
+      "from": "../Shared/focus-shared-walking.md",
+      "to": "/shared/walking"
+    },
+    {
+      "source": "Orion/focus-guide-operation.md",
+      "from": "../Shared/focus-shared-webots.md",
+      "to": "/shared/webots"
+    },
+    {
+      "source": "Orion/focus-guide-setup.md",
+      "from": "../Shared/focus-shared-tools.md",
+      "to": "/shared/tools"
+    },
+    {
+      "source": "Orion/focus-guide-setup.md",
+      "from": "../Shared/focus-shared-manager.md",
+      "to": "/shared/manager"
+    },
+    {
+      "source": "Orion/focus-guide-setup.md",
+      "from": "../Shared/focus-shared-workspace.md",
+      "to": "/shared/workspace"
+    },
+    {
+      "source": "Orion/focus-guide-setup.md",
+      "from": "../Shared/focus-shared-framework.md",
+      "to": "/shared/framework"
+    },
+    {
+      "source": "Orion/focus-guide-setup.md",
+      "from": "../Shared/focus-shared-manager.md",
+      "to": "/shared/manager"
+    },
+    {
+      "source": "Orion/focus-guide-setup.md",
+      "from": "../Shared/focus-shared-webots.md",
+      "to": "/shared/webots"
+    },
+    {
+      "source": "Orion/README.md",
+      "from": "focus-guide-setup.md",
+      "to": "/orion/setup"
+    },
+    {
+      "source": "Orion/README.md",
+      "from": "focus-guide-architecture.md",
+      "to": "/orion/architecture"
+    },
+    {
+      "source": "Orion/README.md",
+      "from": "focus-guide-operation.md",
+      "to": "/orion/operation"
+    },
+    {
+      "source": "Orion/README.md",
+      "from": "focus-guide-differences.md",
+      "to": "/orion/settings"
+    },
+    {
+      "source": "Orion/README.md",
+      "from": "focus-difference-setup.md",
+      "to": "/orion/investigations/setup"
+    },
+    {
+      "source": "Orion/README.md",
+      "from": "focus-difference-hardware.md",
+      "to": "/orion/investigations/hardware"
+    },
+    {
+      "source": "Orion/README.md",
+      "from": "focus-difference-motion.md",
+      "to": "/orion/investigations/motion"
+    },
+    {
+      "source": "Orion/README.md",
+      "from": "focus-difference-vision.md",
+      "to": "/orion/investigations/vision"
+    },
+    {
+      "source": "Orion/README.md",
+      "from": "focus-difference-navigation.md",
+      "to": "/orion/investigations/navigation"
+    },
+    {
+      "source": "Orion/README.md",
+      "from": "focus-difference-other.md",
+      "to": "/orion/investigations/other"
+    },
+    {
+      "source": "Orion/README.md",
+      "from": "../Shared/README.md",
+      "to": "/shared"
+    },
+    {
+      "source": "Orion/README.md",
+      "from": "DIFFERENCES.md",
+      "to": "/orion/changed-files"
+    },
+    {
+      "source": "Orion/README.md",
+      "from": "../README.md",
+      "to": "/"
+    },
+    {
+      "source": "README.md",
+      "from": "REVIEW-NOTES.md",
+      "to": "/review-notes"
+    },
+    {
+      "source": "README.md",
+      "from": "Shared/README.md",
+      "to": "/shared"
+    },
+    {
+      "source": "README.md",
+      "from": "BRANCH-COMPARISON.md",
+      "to": "/branch-comparison"
+    },
+    {
+      "source": "README.md",
+      "from": "Alphonse/focus-guide-setup.md",
+      "to": "/alphonse/setup"
+    },
+    {
+      "source": "README.md",
+      "from": "Alphonse/focus-guide-architecture.md",
+      "to": "/alphonse/architecture"
+    },
+    {
+      "source": "README.md",
+      "from": "Alphonse/focus-guide-operation.md",
+      "to": "/alphonse/operation"
+    },
+    {
+      "source": "README.md",
+      "from": "Alphonse/focus-guide-differences.md",
+      "to": "/alphonse/settings"
+    },
+    {
+      "source": "README.md",
+      "from": "Alphonse/README.md",
+      "to": "/alphonse"
+    },
+    {
+      "source": "README.md",
+      "from": "Chronus/focus-guide-setup.md",
+      "to": "/chronus/setup"
+    },
+    {
+      "source": "README.md",
+      "from": "Chronus/focus-guide-architecture.md",
+      "to": "/chronus/architecture"
+    },
+    {
+      "source": "README.md",
+      "from": "Chronus/focus-guide-operation.md",
+      "to": "/chronus/operation"
+    },
+    {
+      "source": "README.md",
+      "from": "Chronus/focus-guide-differences.md",
+      "to": "/chronus/settings"
+    },
+    {
+      "source": "README.md",
+      "from": "Chronus/README.md",
+      "to": "/chronus"
+    },
+    {
+      "source": "README.md",
+      "from": "Orion/focus-guide-setup.md",
+      "to": "/orion/setup"
+    },
+    {
+      "source": "README.md",
+      "from": "Orion/focus-guide-architecture.md",
+      "to": "/orion/architecture"
+    },
+    {
+      "source": "README.md",
+      "from": "Orion/focus-guide-operation.md",
+      "to": "/orion/operation"
+    },
+    {
+      "source": "README.md",
+      "from": "Orion/focus-guide-differences.md",
+      "to": "/orion/settings"
+    },
+    {
+      "source": "README.md",
+      "from": "Orion/README.md",
+      "to": "/orion"
+    },
+    {
+      "source": "REVIEW-NOTES.md",
+      "from": "Shared/focus-shared-workspace.md",
+      "to": "/shared/workspace"
+    },
+    {
+      "source": "REVIEW-NOTES.md",
+      "from": "Shared/focus-shared-actions.md",
+      "to": "/shared/actions"
+    },
+    {
+      "source": "REVIEW-NOTES.md",
+      "from": "Shared/focus-shared-detectors.md",
+      "to": "/shared/detectors"
+    },
+    {
+      "source": "REVIEW-NOTES.md",
+      "from": "Shared/focus-shared-tools.md",
+      "to": "/shared/tools"
+    },
+    {
+      "source": "REVIEW-NOTES.md",
+      "from": "Alphonse/focus-difference-setup.md",
+      "to": "/alphonse/investigations/setup"
+    },
+    {
+      "source": "REVIEW-NOTES.md",
+      "from": "Alphonse/focus-difference-other.md",
+      "to": "/alphonse/investigations/other"
+    },
+    {
+      "source": "REVIEW-NOTES.md",
+      "from": "Chronus/focus-difference-other.md",
+      "to": "/chronus/investigations/other"
+    },
+    {
+      "source": "REVIEW-NOTES.md",
+      "from": "Orion/focus-difference-setup.md",
+      "to": "/orion/investigations/setup"
+    },
+    {
+      "source": "REVIEW-NOTES.md",
+      "from": "Orion/focus-difference-vision.md",
+      "to": "/orion/investigations/vision"
+    },
+    {
+      "source": "REVIEW-NOTES.md",
+      "from": "Orion/focus-difference-other.md",
+      "to": "/orion/investigations/other"
+    },
+    {
+      "source": "REVIEW-NOTES.md",
+      "from": "Alphonse/focus-guide-differences.md",
+      "to": "/alphonse/settings"
+    },
+    {
+      "source": "REVIEW-NOTES.md",
+      "from": "Chronus/focus-guide-operation.md",
+      "to": "/chronus/operation"
+    },
+    {
+      "source": "REVIEW-NOTES.md",
+      "from": "Chronus/focus-guide-differences.md",
+      "to": "/chronus/settings"
+    },
+    {
+      "source": "Shared/focus-shared-workspace.md",
+      "from": "README.md",
+      "to": "/shared"
+    },
+    {
+      "source": "Shared/README.md",
+      "from": "focus-shared-workspace.md",
+      "to": "/shared/workspace"
+    },
+    {
+      "source": "Shared/README.md",
+      "from": "focus-shared-framework.md",
+      "to": "/shared/framework"
+    },
+    {
+      "source": "Shared/README.md",
+      "from": "focus-shared-messages.md",
+      "to": "/shared/messages"
+    },
+    {
+      "source": "Shared/README.md",
+      "from": "focus-shared-manager.md",
+      "to": "/shared/manager"
+    },
+    {
+      "source": "Shared/README.md",
+      "from": "focus-shared-walking.md",
+      "to": "/shared/walking"
+    },
+    {
+      "source": "Shared/README.md",
+      "from": "focus-shared-actions.md",
+      "to": "/shared/actions"
+    },
+    {
+      "source": "Shared/README.md",
+      "from": "focus-shared-kinematics.md",
+      "to": "/shared/kinematics"
+    },
+    {
+      "source": "Shared/README.md",
+      "from": "focus-shared-webots.md",
+      "to": "/shared/webots"
+    },
+    {
+      "source": "Shared/README.md",
+      "from": "focus-shared-teleop.md",
+      "to": "/shared/teleop"
+    },
+    {
+      "source": "Shared/README.md",
+      "from": "focus-shared-yolo.md",
+      "to": "/shared/yolo"
+    },
+    {
+      "source": "Shared/README.md",
+      "from": "focus-shared-detectors.md",
+      "to": "/shared/detectors"
+    },
+    {
+      "source": "Shared/README.md",
+      "from": "focus-shared-object-localization.md",
+      "to": "/shared/object-localization"
+    },
+    {
+      "source": "Shared/README.md",
+      "from": "focus-shared-localization.md",
+      "to": "/shared/localization"
+    },
+    {
+      "source": "Shared/README.md",
+      "from": "focus-shared-footsteps.md",
+      "to": "/shared/footsteps"
+    },
+    {
+      "source": "Shared/README.md",
+      "from": "focus-shared-demo.md",
+      "to": "/shared/demo"
+    },
+    {
+      "source": "Shared/README.md",
+      "from": "focus-shared-tools.md",
+      "to": "/shared/tools"
+    },
+    {
+      "source": "Shared/README.md",
+      "from": "../README.md",
+      "to": "/"
+    }
+  ],
+  "meta_files": 8
+}

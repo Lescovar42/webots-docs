@@ -1,0 +1,26 @@
+{
+  "Alphonse": {
+    "robot": "Alphonse",
+    "branch": "ALPHONSE_NEW_V2",
+    "commit": "adacde8f6e01e6439d170fb6bce025acc051bfa3",
+    "repository": "https://github.com/ProgramBascorro/motion_webots",
+    "included_files": 956,
+    "skipped_files": 529
+  },
+  "Chronus": {
+    "robot": "Chronus",
+    "branch": "CHRONUS_NEW",
+    "commit": "54998e7c56e5b2cce4c1c533758c7d2f2cf7698b",
+    "repository": "https://github.com/ProgramBascorro/motion_webots",
+    "included_files": 896,
+    "skipped_files": 518
+  },
+  "Orion": {
+    "robot": "Orion",
+    "branch": "ORION_NEW",
+    "commit": "dba5be3fefbada854b8d6c11d6655f479b482574",
+    "repository": "https://github.com/ProgramBascorro/motion_webots",
+    "included_files": 894,
+    "skipped_files": 518
+  }
+}

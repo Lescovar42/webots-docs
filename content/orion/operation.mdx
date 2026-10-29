@@ -1,0 +1,115 @@
+# Orion guide: Operation and troubleshooting
+
+> **Scope** — Representative investigation of the OP3 tmux launcher and op3_manager hardware bringup on branch `ORION_NEW` (commit `dba5be3fefbada854b8d6c11d6655f479b482574`). Not exhaustive. All commands are found in source but remain **untested**. See shared architecture details in [shared card](/shared/manager), [shared card](/shared/teleop) and [shared card](/shared/walking).
+
+---
+
+## 1 Prerequisites
+
+The launcher performs a **health check** on every run (`health_check` in [source/scripts/op3_tmux/lib/health.sh:L259-L277](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/health.sh#L259-L277)). It requires:
+
+| Check | Details |
+|---|---|
+| `tmux` | Installed; script can prompt `sudo apt install tmux` ([source/scripts/op3_tmux/lib/health.sh:L5-L23](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/health.sh#L5-L23)) |
+| `ros2` | On PATH |
+| Built workspace | `op3_joy_teleop` must be findable via `ros2 pkg prefix` ([source/scripts/op3_tmux/lib/health.sh:L271-L277](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/health.sh#L271-L277)) |
+| Setup file | Auto-detected in `$WS/install/` (prefers `.bash` / `.sh`; falls back to `.zsh`) ([source/scripts/op3_tmux/lib/health.sh:L100-L132](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/health.sh#L100-L132)) |
+| Webots (simulation) | Binary on PATH or `WEBOTS_HOME` set; skipped for `--doctor` if not required |
+
+A fuller diagnostic runs via `./main.sh --doctor` ([source/scripts/op3_tmux/lib/health.sh:L279-L376](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/health.sh#L279-L376)), which additionally verifies `colcon`, `rosdep`, `gum`, `ttyd`, `docker`, Webots and several ROS packages (`rosbridge_server`, `octomap_*`, `webots_ros2_driver`, `foxglove_bridge`, `joy`).
+
+---
+
+## 2 Entry point
+
+The main entry point is `source/scripts/op3_tmux/main.sh`. It re-executes under `bash` if necessary ([source/scripts/op3_tmux/main.sh:L4-L18](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/main.sh#L4-L18)) and sources a library of modules before dispatching ([source/scripts/op3_tmux/main.sh:L25-L42](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/main.sh#L25-L42)). No command is executed by this draft.
+
+---
+
+## 3 Profiles (simulation vs physical robot)
+
+The launcher uses a **profile** flag (`--profile NAME`) that defaults to `webots` ([source/scripts/op3_tmux/lib/defaults.sh:L8](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/defaults.sh#L8)). The `apply_profile` function ([source/scripts/op3_tmux/lib/profiles.sh:L1-L73](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/profiles.sh#L1-L73)) sets per-profile defaults for every component command and timing parameter.
+
+| Parameter | `webots` | `real_robot` |
+|---|---|---|
+| Manager launch | `op3_manager op3_simulation.launch.py` ([source/scripts/op3_tmux/lib/profiles.sh:L6](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/profiles.sh#L6)) | `op3_bringup op3_manager_with_camera.launch.py` ([source/scripts/op3_tmux/lib/profiles.sh:L25](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/profiles.sh#L25)) |
+| Start delay (Webots → Manager) | 4.0 s ([source/scripts/op3_tmux/lib/profiles.sh:L17](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/profiles.sh#L17)) | 1.0 s ([source/scripts/op3_tmux/lib/profiles.sh:L35](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/profiles.sh#L35)) |
+| Pane stagger (non-manager) | 0.0 s ([source/scripts/op3_tmux/lib/profiles.sh:L20](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/profiles.sh#L20)) | 5.0 s — Jetson 6-core contention during Dynamixel init ([source/scripts/op3_tmux/lib/profiles.sh:L36-L40](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/profiles.sh#L36-L40)) |
+| ROS domain ID | 0 ([source/scripts/op3_tmux/lib/profiles.sh:L21](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/profiles.sh#L21)) | 1 ([source/scripts/op3_tmux/lib/profiles.sh:L41](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/profiles.sh#L41)) |
+| Action file | `motion_4095_ORION.bin` (both) ([source/scripts/op3_tmux/lib/profiles.sh:L51-L52](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/profiles.sh#L51-L52)) |
+
+**Key difference:** the real-robot profile uses `op3_manager_with_camera.launch.py` rather than `op3_simulation.launch.py` and sets `ROS_DOMAIN_ID=1` to isolate from simulation traffic.
+
+---
+
+## 4 Starting the stack (untested procedure)
+
+The following steps are derived from the argument parser and are **not executed**.
+
+1. **Choose a launch profile.** Use `--profile webots` (default, for simulation) or `--profile real_robot` (physical Jetson).
+2. **Select components.** Pass flags like `--base`, `--teleop`, `--foxglove`, `--all`, `--demo`, `--studio`, etc. ([source/scripts/op3_tmux/lib/args.sh:L1-L98](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/args.sh#L1-L98)). For interactive selection, run without flags; `gum` menus appear if installed.
+3. **Run the launcher.** Example (untested):
+   ```
+   ./source/scripts/op3_tmux/main.sh --profile webots --base
+   ```
+   This starts Webots in Pane 0 and the manager in Pane 1 ([source/scripts/op3_tmux/lib/args.sh:L45-L46](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/args.sh#L45-L46)).
+4. **Attach later** with `./main.sh --attach` ([source/scripts/op3_tmux/lib/args.sh:L182](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/args.sh#L182)).
+5. **Stop everything** with `./main.sh --exit` or `./main.sh -x` ([source/scripts/op3_tmux/lib/args.sh:L188](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/args.sh#L188)).
+6. **Free the Dynamixel port** if the manager died but still holds `/dev/ttyUSBx`: `./main.sh --free-port` ([source/scripts/op3_tmux/lib/args.sh:L40](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/args.sh#L40)).
+
+---
+
+## 5 op3_manager and serial port discovery
+
+The physical-robot manager launch file `op3_manager.launch.py` auto-detects the OpenCR/Dynamixel serial device ([source/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py:L22-L37](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py#L22-L37)). It:
+
+- Scans `/dev/ttyUSB0` through `/dev/ttyUSB9` for a writable port ([source/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py:L31](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py#L31)).
+- Falls back to `/dev/ttyOP3` (a udev symlink) or the preferred default `/dev/ttyUSB0` ([source/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py:L35-L37](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py#L35-L37)).
+- Accepts an override via the `OP3_DEVICE` environment variable ([source/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py:L28-L30](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py#L28-L30)).
+- Generates a **patched temporary** `OP3.robot` file with the detected device replacing hard-coded port paths, then registers cleanup at program exit ([source/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py:L40-L58](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py#L40-L58)).
+
+The manager node starts with parameters `angle_unit: 30.0`, `gazebo: False` and the detected `device_name` ([source/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py:L76-L90](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py#L76-L90)).
+
+---
+
+## 6 Troubleshooting checklist
+
+| Symptom | Likely cause / fix | Source reference |
+|---|---|---|
+| `tmux is not installed` | Script prompts for `sudo apt install tmux` | [source/scripts/op3_tmux/lib/health.sh:L5-L23](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/health.sh#L5-L23) |
+| `Workspace is not built` | Run `colcon build --packages-select op3_joy_teleop` then `source install/setup.bash` | [source/scripts/op3_tmux/lib/health.sh:L271-L277](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/health.sh#L271-L277) |
+| Setup file not found | Verify `$WS/install/setup.bash` exists; set `OP3_SETUP` manually | [source/scripts/op3_tmux/lib/health.sh:L158-L190](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/health.sh#L158-L190) |
+| Serial port wrong / busy | Set `OP3_DEVICE=/dev/ttyUSB3` or run `--free-port` | [source/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py:L28-L37](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py#L28-L37) and [source/scripts/op3_tmux/lib/args.sh:L40](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/args.sh#L40) |
+| Dynamixel init contention on Jetson | This is expected; `STACK_STAGGER_SEC=5.0` in `real_robot` profile staggers other panes | [source/scripts/op3_tmux/lib/profiles.sh:L36-L40](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/profiles.sh#L36-L40) |
+| Demo vision pipeline silent | Use `demo.launch.xml` (has its own usb_cam), not `demo_yolo.launch.xml` on this robot | [source/scripts/op3_tmux/lib/defaults.sh:L67-L84](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/defaults.sh#L67-L84) |
+| ROS messages invisible across launchers | Mismatched `ROS_DOMAIN_ID` (0 for webots, 1 for real_robot) | [source/scripts/op3_tmux/lib/profiles.sh:L21](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/profiles.sh#L21), [source/scripts/op3_tmux/lib/profiles.sh:L41](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/profiles.sh#L41) |
+
+---
+
+## 7 Configuration overrides
+
+Every component command can be overridden by environment variables ([source/scripts/op3_tmux/lib/args.sh:L87-L102](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/args.sh#L87-L102)). Examples:
+
+- `OP3_MANAGER_CMD` — custom manager launch
+- `OP3_START_DELAY_SEC` — delay between Webots and Manager
+- `OP3_SHELL_RUNNER` — force `"zsh -lc"` or `"bash -lc"`
+- Preferences persist in `~/.config/op3-stack/prefs.sh` ([source/scripts/op3_tmux/lib/health.sh:L32-L38](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_tmux/lib/health.sh#L32-L38))
+
+---
+
+## 8 Known gaps and uncertainties
+
+| Gap | Status |
+|---|---|
+| `op3_manager_with_camera.launch.py` — exact camera node wiring | **Unexamined**; file not among assigned sources |
+| `op3_simulation.launch.py` vs `op3_manager.launch.py` difference | **Needs review**; only `op3_manager.launch.py` was inspected |
+| `selection.sh`, `start.sh`, `reap.sh` internal pane orchestration | **Unexamined**; referenced by `main.sh` but not read here |
+| Docker workflow (`op3_docker.sh`) | **Unexamined**; listed in args help but not inspected |
+| Interactive `gum` menu behavior | **Unexamined**; assumed from `args.sh` dispatch |
+| Webots-specific robot URDF and controller | Referenced only via profiles; defer to [shared card](/shared/webots) |
+
+---
+
+## 9 Sources
+
+All path references point to the workspace root `/home/informatika/robot-docs/workspaces/Orion/source/` on branch `ORION_NEW`, commit `dba5be3fefbada854b8d6c11d6655f479b482574`.

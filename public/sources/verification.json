@@ -1,0 +1,1703 @@
+{
+  "date": "2026-10-29",
+  "scope": "focused",
+  "reports": 46,
+  "done": 46,
+  "needs_review": 0,
+  "failed": 0,
+  "reviewed_flagged_reports": 13,
+  "recovered_failures": 5,
+  "deferred_audit_jobs": 897,
+  "runtime_hardware_tests_performed": false,
+  "documents": [
+    {
+      "task": 1023,
+      "robot": "Alphonse",
+      "stage": "shared-core",
+      "title": "Shared code: Workspace and package structure",
+      "file": "Shared/focus-shared-workspace.md",
+      "branch": "ALPHONSE_NEW_V2",
+      "commit": "adacde8f6e01e6439d170fb6bce025acc051bfa3",
+      "source_files_read": [
+        "src/alponse_description/CMakeLists.txt",
+        "src/alponse_description/package.xml",
+        "src/op3_yolo_vision/package.xml",
+        "src/soccer_localization/package.xml"
+      ],
+      "valid_reference_count": 6,
+      "verification_method": "Codex source review with snapshot hashes and printed line ranges",
+      "shared_hash_verified": true,
+      "reviewed_source_ranges": [
+        {
+          "path": "src/op3_yolo_vision/package.xml",
+          "sha256": "f039ed3d0f46e10bdb7154907d56ef0f968e68ce49bfd623ba8d1f62c8408797",
+          "ranges": [
+            [
+              1,
+              24
+            ]
+          ]
+        },
+        {
+          "path": "src/soccer_localization/package.xml",
+          "sha256": "915788d3da4a44b665552e5d232b751da0d282a15711c3a76ff78dcfcb93990e",
+          "ranges": [
+            [
+              1,
+              26
+            ]
+          ]
+        },
+        {
+          "path": "src/alponse_description/CMakeLists.txt",
+          "sha256": "70c1ab963346bed565d5291f16b1f1a16783d052e0443478771237473f75fea3",
+          "ranges": [
+            [
+              1,
+              21
+            ]
+          ]
+        },
+        {
+          "path": "src/alponse_description/package.xml",
+          "sha256": "1c03e017bbaa0b6ff8c0c88cfe4004b73b40c9a140d49482ecdfcbf1cb8e0e82",
+          "ranges": [
+            [
+              1,
+              22
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "task": 1024,
+      "robot": "Alphonse",
+      "stage": "guide",
+      "title": "Alphonse guide: Setup and prerequisites",
+      "file": "Alphonse/focus-guide-setup.md",
+      "branch": "ALPHONSE_NEW_V2",
+      "commit": "adacde8f6e01e6439d170fb6bce025acc051bfa3",
+      "source_files_read": [
+        "Dockerfile",
+        "README.md",
+        "docker-entrypoint.sh",
+        "script.sh",
+        "scripts/op3_docker.sh"
+      ],
+      "valid_reference_count": 58,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": false
+    },
+    {
+      "task": 1025,
+      "robot": "Alphonse",
+      "stage": "shared-core",
+      "title": "Shared code: Framework and device interfaces",
+      "file": "Shared/focus-shared-framework.md",
+      "branch": "ALPHONSE_NEW_V2",
+      "commit": "adacde8f6e01e6439d170fb6bce025acc051bfa3",
+      "source_files_read": [
+        "src/ROBOTIS-Framework/README.md",
+        "src/ROBOTIS-Framework/robotis_controller/package.xml",
+        "src/ROBOTIS-Framework/robotis_device/include/robotis_device/control_table_item.h",
+        "src/ROBOTIS-Framework/robotis_device/include/robotis_device/device.h",
+        "src/ROBOTIS-Framework/robotis_device/include/robotis_device/dynamixel.h",
+        "src/ROBOTIS-Framework/robotis_device/src/robotis_device/dynamixel.cpp"
+      ],
+      "valid_reference_count": 20,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": true
+    },
+    {
+      "task": 1026,
+      "robot": "Alphonse",
+      "stage": "shared-core",
+      "title": "Shared code: ROS messages and service interfaces",
+      "file": "Shared/focus-shared-messages.md",
+      "branch": "ALPHONSE_NEW_V2",
+      "commit": "adacde8f6e01e6439d170fb6bce025acc051bfa3",
+      "source_files_read": [
+        "src/ROBOTIS-Framework-msgs/robotis_controller_msgs/msg/JointCtrlModule.msg",
+        "src/ROBOTIS-Framework-msgs/robotis_controller_msgs/msg/StatusMsg.msg",
+        "src/ROBOTIS-Framework-msgs/robotis_controller_msgs/srv/SetJointModule.srv",
+        "src/ROBOTIS-OP3-msgs/op3_online_walking_module_msgs/msg/WalkingParam.msg"
+      ],
+      "valid_reference_count": 12,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": true
+    },
+    {
+      "task": 1027,
+      "robot": "Alphonse",
+      "stage": "shared-core",
+      "title": "Shared code: Manager and hardware bringup",
+      "file": "Shared/focus-shared-manager.md",
+      "branch": "ALPHONSE_NEW_V2",
+      "commit": "adacde8f6e01e6439d170fb6bce025acc051bfa3",
+      "source_files_read": [
+        "src/ROBOTIS-OP3/op3_manager/CMakeLists.txt",
+        "src/ROBOTIS-OP3/op3_manager/config/offset.yaml",
+        "src/ROBOTIS-OP3/op3_manager/launch/op3_simulation.launch.py",
+        "src/ROBOTIS-OP3/op3_manager/package.xml"
+      ],
+      "valid_reference_count": 38,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": true
+    },
+    {
+      "task": 1028,
+      "robot": "Alphonse",
+      "stage": "shared-core",
+      "title": "Shared code: Walking and balance modules",
+      "file": "Shared/focus-shared-walking.md",
+      "branch": "ALPHONSE_NEW_V2",
+      "commit": "adacde8f6e01e6439d170fb6bce025acc051bfa3",
+      "source_files_read": [
+        "src/ROBOTIS-OP3/op3_balance_control/CMakeLists.txt",
+        "src/ROBOTIS-OP3/op3_balance_control/package.xml",
+        "src/ROBOTIS-OP3/op3_online_walking_module/include/op3_online_walking_module/joint_control.h",
+        "src/ROBOTIS-OP3/op3_online_walking_module/src/joint_control.cpp"
+      ],
+      "valid_reference_count": 8,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": true
+    },
+    {
+      "task": 1029,
+      "robot": "Alphonse",
+      "stage": "shared-core",
+      "title": "Shared code: Action and motion modules",
+      "file": "Shared/focus-shared-actions.md",
+      "branch": "ALPHONSE_NEW_V2",
+      "commit": "adacde8f6e01e6439d170fb6bce025acc051bfa3",
+      "source_files_read": [
+        "src/ROBOTIS-OP3/op3_action_module/CMakeLists.txt",
+        "src/ROBOTIS-OP3/op3_action_module/include/op3_action_module/action_file_define.h",
+        "src/ROBOTIS-OP3/op3_action_module/include/op3_action_module/action_module.h",
+        "src/ROBOTIS-OP3/op3_base_module/src/base_module_state.cpp"
+      ],
+      "valid_reference_count": 5,
+      "verification_method": "Codex source review with snapshot hashes and printed line ranges",
+      "shared_hash_verified": true,
+      "reviewed_source_ranges": [
+        {
+          "path": "src/ROBOTIS-OP3/op3_action_module/CMakeLists.txt",
+          "sha256": "707a29e5559541f8cc2c9c00ae42d201115eb9ab6c7bffabb7facc24c1329060",
+          "ranges": [
+            [
+              1,
+              50
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-OP3/op3_base_module/src/base_module_state.cpp",
+          "sha256": "93248b45628f755b78f43c7463c22c34302aaf9616519508e7d6d3d5b109b917",
+          "ranges": [
+            [
+              19,
+              52
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-OP3/op3_action_module/include/op3_action_module/action_file_define.h",
+          "sha256": "2f287f8111e27a50d210e56e463d8a3a1bf4b78a3f0c7d034b7ef5c8289d6001",
+          "ranges": [
+            [
+              19,
+              74
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-OP3/op3_action_module/include/op3_action_module/action_module.h",
+          "sha256": "af11212183ae6f76e6e8e867747f6a2887f597c8bccc73a738d1e23158364078",
+          "ranges": [
+            [
+              41,
+              106
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "task": 1030,
+      "robot": "Alphonse",
+      "stage": "shared-core",
+      "title": "Shared code: Kinematics and mathematics",
+      "file": "Shared/focus-shared-kinematics.md",
+      "branch": "ALPHONSE_NEW_V2",
+      "commit": "adacde8f6e01e6439d170fb6bce025acc051bfa3",
+      "source_files_read": [
+        "src/ROBOTIS-Math/README.md",
+        "src/ROBOTIS-Math/robotis_math/CMakeLists.txt",
+        "src/ROBOTIS-Math/robotis_math/include/robotis_math/bezier_curve.h",
+        "src/ROBOTIS-Math/robotis_math/include/robotis_math/robotis_linear_algebra.h",
+        "src/ROBOTIS-Math/robotis_math/include/robotis_math/robotis_math_base.h",
+        "src/ROBOTIS-Math/robotis_math/src/bezier_curve.cpp"
+      ],
+      "valid_reference_count": 21,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": true
+    },
+    {
+      "task": 1031,
+      "robot": "Alphonse",
+      "stage": "shared-core",
+      "title": "Shared code: Webots and simulation integration",
+      "file": "Shared/focus-shared-webots.md",
+      "branch": "ALPHONSE_NEW_V2",
+      "commit": "adacde8f6e01e6439d170fb6bce025acc051bfa3",
+      "source_files_read": [
+        "src/ROBOTIS-OP3-Simulations/op3_gazebo_ros2/launch/robot_sim.launch.py",
+        "src/ROBOTIS-OP3-Simulations/op3_webots_ros2/launch/robot_launch.py",
+        "src/ROBOTIS-OP3-Simulations/op3_webots_ros2/package.xml",
+        "src/ROBOTIS-OP3-Simulations/op3_webots_ros2/protos/robocup_field/RoboCupBackground.proto"
+      ],
+      "valid_reference_count": 23,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": true
+    },
+    {
+      "task": 1032,
+      "robot": "Alphonse",
+      "stage": "shared-core",
+      "title": "Shared code: Joystick and teleoperation",
+      "file": "Shared/focus-shared-teleop.md",
+      "branch": "ALPHONSE_NEW_V2",
+      "commit": "adacde8f6e01e6439d170fb6bce025acc051bfa3",
+      "source_files_read": [
+        "src/op3_joy_teleop/HOW_TO_KICK.md",
+        "src/op3_joy_teleop/launch/op3_joy_teleop.launch.py",
+        "src/op3_joy_teleop/op3_joy_teleop/__init__.py",
+        "src/op3_joy_teleop/package.xml"
+      ],
+      "valid_reference_count": 21,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": true
+    },
+    {
+      "task": 1033,
+      "robot": "Alphonse",
+      "stage": "shared-core",
+      "title": "Shared code: Camera and YOLO integration",
+      "file": "Shared/focus-shared-yolo.md",
+      "branch": "ALPHONSE_NEW_V2",
+      "commit": "adacde8f6e01e6439d170fb6bce025acc051bfa3",
+      "source_files_read": [
+        "src/op3_yolo_vision/CMakeLists.txt",
+        "src/op3_yolo_vision/include/op3_yolo_vision/yolo_detector.hpp",
+        "src/op3_yolo_vision/launch/yolo.launch.py",
+        "src/op3_yolo_vision/src/yolo_detector_node.cpp"
+      ],
+      "valid_reference_count": 6,
+      "verification_method": "Codex source review with snapshot hashes and printed line ranges",
+      "shared_hash_verified": true,
+      "reviewed_source_ranges": [
+        {
+          "path": "src/op3_yolo_vision/CMakeLists.txt",
+          "sha256": "e5d7b38ef273761590d2559cf5a33d9e349ba8cf520d2fd5feebdd0b19d3680d",
+          "ranges": [
+            [
+              1,
+              80
+            ]
+          ]
+        },
+        {
+          "path": "src/op3_yolo_vision/launch/yolo.launch.py",
+          "sha256": "141ecc9ccf0ceac7496ba41e3da7c2b275733e8aa32f90fc54802ca33fbf78ca",
+          "ranges": [
+            [
+              1,
+              26
+            ]
+          ]
+        },
+        {
+          "path": "src/op3_yolo_vision/src/yolo_detector_node.cpp",
+          "sha256": "9867a2d03090290652b11f130c55f480dd29fb6c27a491a331069d3d3978f8cb",
+          "ranges": [
+            [
+              1,
+              32
+            ]
+          ]
+        },
+        {
+          "path": "src/op3_yolo_vision/include/op3_yolo_vision/yolo_detector.hpp",
+          "sha256": "946975eeef065155c27eee64b91bf81654270dd30fbfb635f78681eed1c3b1ff",
+          "ranges": [
+            [
+              1,
+              100
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "task": 1034,
+      "robot": "Alphonse",
+      "stage": "shared-core",
+      "title": "Shared code: Ball and face detection",
+      "file": "Shared/focus-shared-detectors.md",
+      "branch": "ALPHONSE_NEW_V2",
+      "commit": "adacde8f6e01e6439d170fb6bce025acc051bfa3",
+      "source_files_read": [
+        "src/ROBOTIS-OP3-Demo/op3_ball_detector/config/ball_detector_params.yaml",
+        "src/ROBOTIS-OP3-Demo/op3_ball_detector/include/op3_ball_detector/ball_detector.h",
+        "src/ROBOTIS-OP3-Demo/op3_ball_detector/launch/ball_detector_from_usb_cam.launch.py",
+        "src/face_detection/CMakeLists.txt"
+      ],
+      "valid_reference_count": 5,
+      "verification_method": "Codex source review with snapshot hashes and printed line ranges",
+      "shared_hash_verified": true,
+      "reviewed_source_ranges": [
+        {
+          "path": "src/face_detection/CMakeLists.txt",
+          "sha256": "c64da8cca2fa790d0519f3811f791932049deec8656ef52699b3742e153f84ba",
+          "ranges": [
+            [
+              1,
+              52
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-OP3-Demo/op3_ball_detector/config/ball_detector_params.yaml",
+          "sha256": "831537a59a5493b733e83209791d23bef3e4bbfb904efca8cc3663244a712aec",
+          "ranges": [
+            [
+              1,
+              28
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-OP3-Demo/op3_ball_detector/launch/ball_detector_from_usb_cam.launch.py",
+          "sha256": "1f3ff53f5e3e07fcbe6288f490debd3e536f412fdcd76da263454cedbc987b81",
+          "ranges": [
+            [
+              1,
+              37
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-OP3-Demo/op3_ball_detector/include/op3_ball_detector/ball_detector.h",
+          "sha256": "cdc3022a6eeb18d5b708890d6f80f82c2fed08cdbb6bb29439d9103d09687938",
+          "ranges": [
+            [
+              49,
+              96
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "task": 1035,
+      "robot": "Alphonse",
+      "stage": "shared-core",
+      "title": "Shared code: Object and ball localization",
+      "file": "Shared/focus-shared-object-localization.md",
+      "branch": "ALPHONSE_NEW_V2",
+      "commit": "adacde8f6e01e6439d170fb6bce025acc051bfa3",
+      "source_files_read": [
+        "src/op3_ball_localization/BUGFIX_CIRCLE_FORMAT.md",
+        "src/op3_ball_localization/README.md",
+        "src/op3_ball_localization/config/simple_ball_tracker.yaml",
+        "src/op3_ball_localization/launch/ball_localizer.launch.py"
+      ],
+      "valid_reference_count": 9,
+      "verification_method": "Codex source review with snapshot hashes and printed line ranges",
+      "shared_hash_verified": true,
+      "reviewed_source_ranges": [
+        {
+          "path": "src/op3_ball_localization/README.md",
+          "sha256": "e58d6ad7626702348b4da353f1320e52523c47e4726fdc0ac225d7011cdbcec6",
+          "ranges": [
+            [
+              1,
+              43
+            ]
+          ]
+        },
+        {
+          "path": "src/op3_ball_localization/config/simple_ball_tracker.yaml",
+          "sha256": "8a6a226275e46b80af56738827c2b8e5ce0522e80d05e1fd18c504af5f4d8d18",
+          "ranges": [
+            [
+              1,
+              43
+            ]
+          ]
+        },
+        {
+          "path": "src/op3_ball_localization/launch/ball_localizer.launch.py",
+          "sha256": "6401abc2b05dbfefb5859d10d68918ac465ed369a7758eb85d69edf3629edb6d",
+          "ranges": [
+            [
+              1,
+              28
+            ]
+          ]
+        },
+        {
+          "path": "src/op3_ball_localization/BUGFIX_CIRCLE_FORMAT.md",
+          "sha256": "b95494891ef943212cb495c7848a20eb3cbf6ec1f49e8b30ac73acbc9d8cb881",
+          "ranges": [
+            [
+              1,
+              61
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "task": 1036,
+      "robot": "Alphonse",
+      "stage": "shared-core",
+      "title": "Shared code: Robot localization and navigation",
+      "file": "Shared/focus-shared-localization.md",
+      "branch": "ALPHONSE_NEW_V2",
+      "commit": "adacde8f6e01e6439d170fb6bce025acc051bfa3",
+      "source_files_read": [
+        "src/humanoid_navigation/humanoid_localization/CMakeLists.txt",
+        "src/humanoid_navigation/humanoid_localization/config/localization_conf_motion_test.yaml",
+        "src/humanoid_navigation/humanoid_localization/include/dynamicEDT3D/dynamicEDT3D.h",
+        "src/humanoid_navigation/humanoid_localization/include/humanoid_localization/HumanoidLocalization.h",
+        "src/humanoid_navigation/humanoid_localization/launch/nao_localization_laser.launch.py",
+        "src/humanoid_navigation/humanoid_localization/src/localization_node.cpp"
+      ],
+      "valid_reference_count": 32,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": true
+    },
+    {
+      "task": 1037,
+      "robot": "Alphonse",
+      "stage": "shared-core",
+      "title": "Shared code: Footstep planning",
+      "file": "Shared/focus-shared-footsteps.md",
+      "branch": "ALPHONSE_NEW_V2",
+      "commit": "adacde8f6e01e6439d170fb6bce025acc051bfa3",
+      "source_files_read": [
+        "src/humanoid_navigation/footstep_planner/CMakeLists.txt",
+        "src/humanoid_navigation/footstep_planner/config/footsteps_asimo.yaml",
+        "src/humanoid_navigation/footstep_planner/include/footstep_planner/Footstep.h",
+        "src/humanoid_navigation/footstep_planner/include/footstep_planner/FootstepPlanner.h",
+        "src/humanoid_navigation/footstep_planner/include/footstep_planner/PlanningState.h",
+        "src/humanoid_navigation/footstep_planner/launch/fake_loc_from_odom.launch.py"
+      ],
+      "valid_reference_count": 19,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": true
+    },
+    {
+      "task": 1038,
+      "robot": "Alphonse",
+      "stage": "shared-core",
+      "title": "Shared code: Demo and soccer behavior entry points",
+      "file": "Shared/focus-shared-demo.md",
+      "branch": "ALPHONSE_NEW_V2",
+      "commit": "adacde8f6e01e6439d170fb6bce025acc051bfa3",
+      "source_files_read": [
+        "src/ROBOTIS-OP3-Demo/op3_demo/include/op3_demo/action_demo.h",
+        "src/ROBOTIS-OP3-Demo/op3_demo/launch/face_detection_op3.launch.xml",
+        "src/ROBOTIS-OP3-Demo/op3_demo/src/action/action_demo.cpp",
+        "src/ROBOTIS-OP3-Demo/op3_read_write_demo/CMakeLists.txt"
+      ],
+      "valid_reference_count": 6,
+      "verification_method": "Codex source review with snapshot hashes and printed line ranges",
+      "shared_hash_verified": true,
+      "reviewed_source_ranges": [
+        {
+          "path": "src/ROBOTIS-OP3-Demo/op3_read_write_demo/CMakeLists.txt",
+          "sha256": "8107182e3fd49ed46ed9c8e4e383b44c3a8d6ee6d341b3f4036c63f408faf292",
+          "ranges": [
+            [
+              1,
+              35
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-OP3-Demo/op3_demo/launch/face_detection_op3.launch.xml",
+          "sha256": "e582d50a44a5ee136d0af2f1f1227b334996d7efbfaa1aca05a891efb8a93eb1",
+          "ranges": [
+            [
+              1,
+              22
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-OP3-Demo/op3_demo/src/action/action_demo.cpp",
+          "sha256": "4ac1b9de7c8669053a41ea4559edb2037ebcfe94370b05e6bfbf13ea5f764ce6",
+          "ranges": [
+            [
+              25,
+              84
+            ],
+            [
+              206,
+              235
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-OP3-Demo/op3_demo/include/op3_demo/action_demo.h",
+          "sha256": "d72bcb05a2c0091289e5c90a850c6b38cd79b1227ae7ccbf4b265d5c5fea9da2",
+          "ranges": [
+            [
+              37,
+              118
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "task": 1039,
+      "robot": "Alphonse",
+      "stage": "shared-core",
+      "title": "Shared code: Studio and robot development tools",
+      "file": "Shared/focus-shared-tools.md",
+      "branch": "ALPHONSE_NEW_V2",
+      "commit": "adacde8f6e01e6439d170fb6bce025acc051bfa3",
+      "source_files_read": [
+        "src/ROBOTIS-OP3-Tools/README.md",
+        "src/ROBOTIS-OP3-Tools/op3_action_editor/config/config_mirror_joint.yaml",
+        "src/ROBOTIS-OP3-Tools/op3_action_editor/include/op3_action_editor/action_editor.h"
+      ],
+      "valid_reference_count": 5,
+      "verification_method": "Codex source review with snapshot hashes and printed line ranges",
+      "shared_hash_verified": true,
+      "reviewed_source_ranges": [
+        {
+          "path": "src/ROBOTIS-OP3-Tools/README.md",
+          "sha256": "3ee267a7e7923ff43cea5cb8c6a20d4daf096515dfc09bf38308856654b70908",
+          "ranges": [
+            [
+              1,
+              40
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-OP3-Tools/op3_action_editor/config/config_mirror_joint.yaml",
+          "sha256": "cc1da8fd89c7968122be3265d73d471f8714d9e32b88503e6db17dde06017f01",
+          "ranges": [
+            [
+              1,
+              13
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-OP3-Tools/op3_action_editor/include/op3_action_editor/action_editor.h",
+          "sha256": "9034acd2606b29c582be382d4411a6704ee74e3b569a476bf132145a70ebdd7d",
+          "ranges": [
+            [
+              44,
+              93
+            ],
+            [
+              125,
+              155
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "task": 1040,
+      "robot": "Alphonse",
+      "stage": "robot-differences",
+      "title": "Alphonse: Environment, startup and launch differences",
+      "file": "Alphonse/focus-difference-setup.md",
+      "branch": "ALPHONSE_NEW_V2",
+      "commit": "adacde8f6e01e6439d170fb6bce025acc051bfa3",
+      "source_files_read": [
+        "Dockerfile",
+        "README.md",
+        "script.sh",
+        "scripts/op3_docker.sh"
+      ],
+      "valid_reference_count": 9,
+      "verification_method": "Codex source review with snapshot hashes and printed line ranges",
+      "shared_hash_verified": false,
+      "reviewed_source_ranges": [
+        {
+          "path": "README.md",
+          "sha256": "64fc09d05d0918d1ba250b35d2cfa85c10fa34a77bddc39110cb8bc149deeb4d",
+          "ranges": [
+            [
+              54,
+              128
+            ]
+          ]
+        },
+        {
+          "path": "Dockerfile",
+          "sha256": "f61133439f2a2c6f2fdb2cbf68b40d45a7ef4e91dd1b1dcb7eeb2b42b99cc199",
+          "ranges": [
+            [
+              24,
+              39
+            ],
+            [
+              230,
+              251
+            ]
+          ]
+        },
+        {
+          "path": "scripts/op3_docker.sh",
+          "sha256": "8a2c7a1d2f84a880607976c5dfcfd684e16dd929370743acc9810bd0e7b53653",
+          "ranges": [
+            [
+              1,
+              33
+            ],
+            [
+              500,
+              560
+            ]
+          ]
+        },
+        {
+          "path": "script.sh",
+          "sha256": "d566e827cabe977398377dadacc48f6c4dbd28d58d26d82fc96bdc77b7091b5b",
+          "ranges": [
+            [
+              61,
+              90
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "task": 1041,
+      "robot": "Alphonse",
+      "stage": "robot-differences",
+      "title": "Alphonse: Hardware, device and calibration differences",
+      "file": "Alphonse/focus-difference-hardware.md",
+      "branch": "ALPHONSE_NEW_V2",
+      "commit": "adacde8f6e01e6439d170fb6bce025acc051bfa3",
+      "source_files_read": [
+        "src/ROBOTIS-Framework/robotis_device/src/robotis_device/robot.cpp",
+        "src/ROBOTIS-OP3/op3_manager/config/OP3.robot",
+        "src/ROBOTIS-OP3/op3_manager/config/dxl_init_OP3.yaml"
+      ],
+      "valid_reference_count": 18,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": false
+    },
+    {
+      "task": 1042,
+      "robot": "Alphonse",
+      "stage": "robot-differences",
+      "title": "Alphonse: Walking, motion and kinematic differences",
+      "file": "Alphonse/focus-difference-motion.md",
+      "branch": "ALPHONSE_NEW_V2",
+      "commit": "adacde8f6e01e6439d170fb6bce025acc051bfa3",
+      "source_files_read": [
+        "src/ROBOTIS-OP3-Demo/op3_demo/config/preset_walking.yaml",
+        "src/ROBOTIS-OP3/op3_kinematics_dynamics/src/op3_kinematics_dynamics.cpp",
+        "src/ROBOTIS-OP3/op3_walking_module/config/param.yaml",
+        "src/ROBOTIS-OP3/op3_walking_module/src/op3_walking_module.cpp"
+      ],
+      "valid_reference_count": 31,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": false
+    },
+    {
+      "task": 1043,
+      "robot": "Alphonse",
+      "stage": "robot-differences",
+      "title": "Alphonse: Camera, perception and vision differences",
+      "file": "Alphonse/focus-difference-vision.md",
+      "branch": "ALPHONSE_NEW_V2",
+      "commit": "adacde8f6e01e6439d170fb6bce025acc051bfa3",
+      "source_files_read": [
+        "src/ROBOTIS-OP3-Demo/op3_ball_detector/README_GOALLINE.md",
+        "src/ROBOTIS-OP3-Demo/op3_ball_detector/config/camera_param.yaml",
+        "src/ROBOTIS-OP3-Demo/op3_ball_detector/scripts/detector_fps.py",
+        "src/ROBOTIS-OP3-Demo/op3_ball_detector/scripts/goalline_core.py",
+        "src/ROBOTIS-OP3-Demo/op3_demo/include/op3_demo/ball_tracker.h",
+        "src/ROBOTIS-OP3-Demo/op3_demo/src/soccer/ball_tracker.cpp"
+      ],
+      "valid_reference_count": 37,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": false
+    },
+    {
+      "task": 1044,
+      "robot": "Alphonse",
+      "stage": "robot-differences",
+      "title": "Alphonse: Localization, navigation and behavior differences",
+      "file": "Alphonse/focus-difference-navigation.md",
+      "branch": "ALPHONSE_NEW_V2",
+      "commit": "adacde8f6e01e6439d170fb6bce025acc051bfa3",
+      "source_files_read": [
+        "src/ROBOTIS-OP3-Demo/op3_demo/config/KALIBRASI_TENDANG_2026-09-07.md",
+        "src/ROBOTIS-OP3-Demo/op3_demo/config/README.md",
+        "src/ROBOTIS-OP3-Demo/op3_demo/include/op3_demo/ball_follower.h",
+        "src/ROBOTIS-OP3-Demo/op3_demo/include/op3_demo/ball_tracker.h",
+        "src/ROBOTIS-OP3-Demo/op3_demo/include/op3_demo/kick_alignment_policy.h",
+        "src/ROBOTIS-OP3-Demo/op3_demo/include/op3_demo/soccer_demo.h",
+        "src/ROBOTIS-OP3-Demo/op3_demo/src/demo_node.cpp"
+      ],
+      "valid_reference_count": 1,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": false
+    },
+    {
+      "task": 1045,
+      "robot": "Alphonse",
+      "stage": "robot-differences",
+      "title": "Alphonse: Other changed files and remaining uncertainty",
+      "file": "Alphonse/focus-difference-other.md",
+      "branch": "ALPHONSE_NEW_V2",
+      "commit": "adacde8f6e01e6439d170fb6bce025acc051bfa3",
+      "source_files_read": [
+        "src/ROBOTIS-Framework/robotis_controller/include/robotis_controller/robotis_controller.h",
+        "src/ROBOTIS-OP3-Tools/op3_gui_demo/src/qnode.cpp",
+        "src/ROBOTIS-OP3/op3_manager/config/dxl_init_OP3.yaml",
+        "src/bascorro_studio/README.md"
+      ],
+      "valid_reference_count": 6,
+      "verification_method": "Codex source review with snapshot hashes and printed line ranges",
+      "shared_hash_verified": false,
+      "reviewed_source_ranges": [
+        {
+          "path": "src/bascorro_studio/README.md",
+          "sha256": "97f387817dfa74a232c8d3358c5ba675c8b1dda7dc9d156ea8ddd44581af46fa",
+          "ranges": [
+            [
+              1,
+              72
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-OP3/op3_manager/config/dxl_init_OP3.yaml",
+          "sha256": "671326cce308f359725dd0705f1420a40f3f95a9c6409e312e5b889bb361b1eb",
+          "ranges": [
+            [
+              1,
+              36
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-OP3-Tools/op3_gui_demo/src/qnode.cpp",
+          "sha256": "4247846880a0c2b8d5059e447b8d8a70c350428e5207d40088407b3285cc66ff",
+          "ranges": [
+            [
+              55,
+              85
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-Framework/robotis_controller/include/robotis_controller/robotis_controller.h",
+          "sha256": "2532ef87ab4dc2e3b3ad23df9c2c4d432f0a25c897d50a60d17dd1f58c41ff80",
+          "ranges": [
+            [
+              60,
+              108
+            ],
+            [
+              129,
+              156
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "task": 1046,
+      "robot": "Chronus",
+      "stage": "robot-differences",
+      "title": "Chronus: Environment, startup and launch differences",
+      "file": "Chronus/focus-difference-setup.md",
+      "branch": "CHRONUS_NEW",
+      "commit": "54998e7c56e5b2cce4c1c533758c7d2f2cf7698b",
+      "source_files_read": [
+        "Dockerfile",
+        "README.md",
+        "docker-entrypoint.sh",
+        "script.sh",
+        "scripts/op3_docker.sh"
+      ],
+      "valid_reference_count": 28,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": false
+    },
+    {
+      "task": 1047,
+      "robot": "Chronus",
+      "stage": "robot-differences",
+      "title": "Chronus: Hardware, device and calibration differences",
+      "file": "Chronus/focus-difference-hardware.md",
+      "branch": "CHRONUS_NEW",
+      "commit": "54998e7c56e5b2cce4c1c533758c7d2f2cf7698b",
+      "source_files_read": [
+        "src/ROBOTIS-Framework/robotis_device/src/robotis_device/robot.cpp",
+        "src/ROBOTIS-OP3/op3_base_module/data/ini_pose.yaml",
+        "src/ROBOTIS-OP3/op3_manager/config/OP3.robot",
+        "src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py",
+        "src/ROBOTIS-OP3/op3_walking_module/config/param.yaml",
+        "src/ROBOTIS-OP3/open_cr_module/src/open_cr_module.cpp"
+      ],
+      "valid_reference_count": 27,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": false
+    },
+    {
+      "task": 1048,
+      "robot": "Chronus",
+      "stage": "robot-differences",
+      "title": "Chronus: Walking, motion and kinematic differences",
+      "file": "Chronus/focus-difference-motion.md",
+      "branch": "CHRONUS_NEW",
+      "commit": "54998e7c56e5b2cce4c1c533758c7d2f2cf7698b",
+      "source_files_read": [
+        "src/ROBOTIS-OP3-Tools/op3_gui_demo/config/gui_motion.yaml",
+        "src/ROBOTIS-OP3/op3_kinematics_dynamics/src/op3_kinematics_dynamics.cpp",
+        "src/ROBOTIS-OP3/op3_walking_module/config/param.yaml",
+        "src/ROBOTIS-OP3/op3_walking_module/include/op3_walking_module/op3_walking_module.h",
+        "src/ROBOTIS-OP3/op3_walking_module/src/op3_walking_module.cpp"
+      ],
+      "valid_reference_count": 16,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": false
+    },
+    {
+      "task": 1049,
+      "robot": "Chronus",
+      "stage": "robot-differences",
+      "title": "Chronus: Camera, perception and vision differences",
+      "file": "Chronus/focus-difference-vision.md",
+      "branch": "CHRONUS_NEW",
+      "commit": "54998e7c56e5b2cce4c1c533758c7d2f2cf7698b",
+      "source_files_read": [
+        "src/ROBOTIS-OP3-Demo/op3_ball_detector/README_YOLO.md",
+        "src/ROBOTIS-OP3-Demo/op3_ball_detector/config/camera_param.yaml",
+        "src/ROBOTIS-OP3-Demo/op3_ball_detector/scripts/yolo_ball_detector.py",
+        "src/ROBOTIS-OP3-Demo/op3_demo/include/op3_demo/ball_follower.h",
+        "src/ROBOTIS-OP3-Demo/op3_demo/launch/demo.launch.xml",
+        "src/ROBOTIS-OP3-Demo/op3_demo/launch/demo_yolo.launch.xml",
+        "src/ROBOTIS-OP3-Demo/op3_demo/src/soccer/ball_tracker.cpp"
+      ],
+      "valid_reference_count": 7,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": false
+    },
+    {
+      "task": 1050,
+      "robot": "Chronus",
+      "stage": "robot-differences",
+      "title": "Chronus: Localization, navigation and behavior differences",
+      "file": "Chronus/focus-difference-navigation.md",
+      "branch": "CHRONUS_NEW",
+      "commit": "54998e7c56e5b2cce4c1c533758c7d2f2cf7698b",
+      "source_files_read": [
+        "src/ROBOTIS-OP3-Demo/op3_demo/include/op3_demo/ball_follower.h",
+        "src/ROBOTIS-OP3-Demo/op3_demo/include/op3_demo/ball_tracker.h",
+        "src/ROBOTIS-OP3-Demo/op3_demo/include/op3_demo/op_demo.h",
+        "src/ROBOTIS-OP3-Demo/op3_demo/include/op3_demo/soccer_demo.h",
+        "src/ROBOTIS-OP3-Demo/op3_demo/src/demo_node.cpp",
+        "src/ROBOTIS-OP3-Demo/op3_demo/src/soccer/soccer_demo.cpp"
+      ],
+      "valid_reference_count": 18,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": false
+    },
+    {
+      "task": 1051,
+      "robot": "Chronus",
+      "stage": "robot-differences",
+      "title": "Chronus: Other changed files and remaining uncertainty",
+      "file": "Chronus/focus-difference-other.md",
+      "branch": "CHRONUS_NEW",
+      "commit": "54998e7c56e5b2cce4c1c533758c7d2f2cf7698b",
+      "source_files_read": [
+        "src/ROBOTIS-Framework/robotis_controller/include/robotis_controller/robotis_controller.h",
+        "src/ROBOTIS-OP3-Tools/op3_gui_demo/src/qnode.cpp",
+        "src/bascorro_studio/README.md",
+        "src/op3_joy_teleop/config/op3_joy_teleop.yaml"
+      ],
+      "valid_reference_count": 6,
+      "verification_method": "Codex source review with snapshot hashes and printed line ranges",
+      "shared_hash_verified": false,
+      "reviewed_source_ranges": [
+        {
+          "path": "src/bascorro_studio/README.md",
+          "sha256": "7d2215a629244407d4ef6e8eef8ce4a0b0e9c4b7befc91f267c37c697f112a2e",
+          "ranges": [
+            [
+              1,
+              72
+            ]
+          ]
+        },
+        {
+          "path": "src/op3_joy_teleop/config/op3_joy_teleop.yaml",
+          "sha256": "60e6029cf09c13d926555aa8f2f5f14efe133e1bb8d80e0eef2fffe75e61e62d",
+          "ranges": [
+            [
+              1,
+              48
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-OP3-Tools/op3_gui_demo/src/qnode.cpp",
+          "sha256": "508aa1aaaf5eb5453cb4805217859ec796c1966ebef9986130a6f97b52ca3f0e",
+          "ranges": [
+            [
+              55,
+              85
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-Framework/robotis_controller/include/robotis_controller/robotis_controller.h",
+          "sha256": "e8a8e1a0565e7652a4f6ef0da244413a3567acdeaa83835678ab26eaebb0f6c0",
+          "ranges": [
+            [
+              60,
+              105
+            ],
+            [
+              124,
+              151
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "task": 1052,
+      "robot": "Orion",
+      "stage": "robot-differences",
+      "title": "Orion: Environment, startup and launch differences",
+      "file": "Orion/focus-difference-setup.md",
+      "branch": "ORION_NEW",
+      "commit": "dba5be3fefbada854b8d6c11d6655f479b482574",
+      "source_files_read": [
+        "Dockerfile",
+        "README.md",
+        "script.sh",
+        "scripts/op3_docker.sh"
+      ],
+      "valid_reference_count": 9,
+      "verification_method": "Codex source review with snapshot hashes and printed line ranges",
+      "shared_hash_verified": false,
+      "reviewed_source_ranges": [
+        {
+          "path": "README.md",
+          "sha256": "e589cdec5aeb77b419641cca296928d5783a8798eb9f941455c6792a107deab7",
+          "ranges": [
+            [
+              54,
+              128
+            ]
+          ]
+        },
+        {
+          "path": "Dockerfile",
+          "sha256": "ea7b7d0e5cb2577f8e4f4fa270274b713532827dff28cc56fa88b8e915f4c4ba",
+          "ranges": [
+            [
+              24,
+              39
+            ],
+            [
+              252,
+              278
+            ]
+          ]
+        },
+        {
+          "path": "scripts/op3_docker.sh",
+          "sha256": "0d778910e574c35c8933ebc8a4c57f9481eaf22528fd40b99b96ac249af4ffe8",
+          "ranges": [
+            [
+              1,
+              50
+            ],
+            [
+              500,
+              600
+            ]
+          ]
+        },
+        {
+          "path": "script.sh",
+          "sha256": "839c6627b07e92c3ee2daf6459e4fd01b487fac0b4d8c7d36247842b07946de0",
+          "ranges": [
+            [
+              59,
+              85
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "task": 1053,
+      "robot": "Orion",
+      "stage": "robot-differences",
+      "title": "Orion: Hardware, device and calibration differences",
+      "file": "Orion/focus-difference-hardware.md",
+      "branch": "ORION_NEW",
+      "commit": "dba5be3fefbada854b8d6c11d6655f479b482574",
+      "source_files_read": [
+        "src/ROBOTIS-Framework/robotis_device/src/robotis_device/robot.cpp",
+        "src/ROBOTIS-OP3/op3_manager/config/OP3.robot",
+        "src/ROBOTIS-OP3/op3_manager/config/dxl_init_OP3.yaml"
+      ],
+      "valid_reference_count": 26,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": false
+    },
+    {
+      "task": 1054,
+      "robot": "Orion",
+      "stage": "robot-differences",
+      "title": "Orion: Walking, motion and kinematic differences",
+      "file": "Orion/focus-difference-motion.md",
+      "branch": "ORION_NEW",
+      "commit": "dba5be3fefbada854b8d6c11d6655f479b482574",
+      "source_files_read": [
+        "src/ROBOTIS-OP3-Tools/op3_gui_demo/config/gui_motion.yaml",
+        "src/ROBOTIS-OP3/op3_kinematics_dynamics/src/op3_kinematics_dynamics.cpp",
+        "src/ROBOTIS-OP3/op3_walking_module/config/param.yaml",
+        "src/ROBOTIS-OP3/op3_walking_module/src/op3_walking_module.cpp"
+      ],
+      "valid_reference_count": 11,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": false
+    },
+    {
+      "task": 1055,
+      "robot": "Orion",
+      "stage": "robot-differences",
+      "title": "Orion: Camera, perception and vision differences",
+      "file": "Orion/focus-difference-vision.md",
+      "branch": "ORION_NEW",
+      "commit": "dba5be3fefbada854b8d6c11d6655f479b482574",
+      "source_files_read": [
+        "src/ROBOTIS-OP3-Demo/op3_ball_detector/README_YOLO.md",
+        "src/ROBOTIS-OP3-Demo/op3_ball_detector/config/camera_param.yaml",
+        "src/ROBOTIS-OP3-Demo/op3_ball_detector/scripts/yolo_ball_detector.py",
+        "src/ROBOTIS-OP3-Demo/op3_demo/include/op3_demo/ball_follower.h"
+      ],
+      "valid_reference_count": 11,
+      "verification_method": "Codex source review with snapshot hashes and printed line ranges",
+      "shared_hash_verified": false,
+      "reviewed_source_ranges": [
+        {
+          "path": "src/ROBOTIS-OP3-Demo/op3_ball_detector/config/camera_param.yaml",
+          "sha256": "0191a8e0061030fbb0c1985da4b1643896bdf5a4053005e4c054aeb000f7967f",
+          "ranges": [
+            [
+              1,
+              23
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-OP3-Demo/op3_ball_detector/scripts/yolo_ball_detector.py",
+          "sha256": "bc96b5ed58a49766f05854f83631a6cf45535374d5ae356acdc596e96a59481a",
+          "ranges": [
+            [
+              20,
+              75
+            ],
+            [
+              110,
+              145
+            ],
+            [
+              194,
+              243
+            ],
+            [
+              278,
+              318
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-OP3-Demo/op3_demo/include/op3_demo/ball_follower.h",
+          "sha256": "827500ba8b80afc32fd1432b9464f7f375612a25277cc019ab66f543c38c7ec8",
+          "ranges": [
+            [
+              40,
+              75
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-OP3-Demo/op3_ball_detector/README_YOLO.md",
+          "sha256": "82dda4f23f466c429a7269306682cfb2e412b7ba5c7cfb8cbe44fa73f7917a9f",
+          "ranges": [
+            [
+              1,
+              70
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "task": 1056,
+      "robot": "Orion",
+      "stage": "robot-differences",
+      "title": "Orion: Localization, navigation and behavior differences",
+      "file": "Orion/focus-difference-navigation.md",
+      "branch": "ORION_NEW",
+      "commit": "dba5be3fefbada854b8d6c11d6655f479b482574",
+      "source_files_read": [
+        "src/ROBOTIS-OP3-Demo/op3_demo/include/op3_demo/op_demo.h",
+        "src/ROBOTIS-OP3-Demo/op3_demo/include/op3_demo/soccer_demo.h",
+        "src/ROBOTIS-OP3-Demo/op3_demo/src/demo_node.cpp",
+        "src/ROBOTIS-OP3-Demo/op3_demo/src/soccer/soccer_demo.cpp"
+      ],
+      "valid_reference_count": 36,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": false
+    },
+    {
+      "task": 1057,
+      "robot": "Orion",
+      "stage": "robot-differences",
+      "title": "Orion: Other changed files and remaining uncertainty",
+      "file": "Orion/focus-difference-other.md",
+      "branch": "ORION_NEW",
+      "commit": "dba5be3fefbada854b8d6c11d6655f479b482574",
+      "source_files_read": [
+        "src/ROBOTIS-Framework/robotis_controller/include/robotis_controller/robotis_controller.h",
+        "src/ROBOTIS-OP3-Tools/op3_gui_demo/src/qnode.cpp",
+        "src/ROBOTIS-OP3/op3_manager/config/dxl_init_OP3.yaml",
+        "src/bascorro_studio/README.md"
+      ],
+      "valid_reference_count": 5,
+      "verification_method": "Codex source review with snapshot hashes and printed line ranges",
+      "shared_hash_verified": false,
+      "reviewed_source_ranges": [
+        {
+          "path": "src/bascorro_studio/README.md",
+          "sha256": "7d2215a629244407d4ef6e8eef8ce4a0b0e9c4b7befc91f267c37c697f112a2e",
+          "ranges": [
+            [
+              1,
+              72
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-OP3/op3_manager/config/dxl_init_OP3.yaml",
+          "sha256": "c7b2249c3458987f2bb2647856256d8e80b65ba9fa363745903ffe5fb9769cdc",
+          "ranges": [
+            [
+              1,
+              40
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-OP3-Tools/op3_gui_demo/src/qnode.cpp",
+          "sha256": "508aa1aaaf5eb5453cb4805217859ec796c1966ebef9986130a6f97b52ca3f0e",
+          "ranges": [
+            [
+              55,
+              85
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-Framework/robotis_controller/include/robotis_controller/robotis_controller.h",
+          "sha256": "25e61d8b1c433ab268fb8865fd6956274745175ca43c7e8b49c03f216a6524d0",
+          "ranges": [
+            [
+              60,
+              110
+            ],
+            [
+              130,
+              157
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "task": 1058,
+      "robot": "Alphonse",
+      "stage": "guide",
+      "title": "Alphonse guide: Architecture and interfaces",
+      "file": "Alphonse/focus-guide-architecture.md",
+      "branch": "ALPHONSE_NEW_V2",
+      "commit": "adacde8f6e01e6439d170fb6bce025acc051bfa3",
+      "source_files_read": [
+        "src/ROBOTIS-Framework-msgs/README.md",
+        "src/ROBOTIS-Framework/robotis_controller/include/robotis_controller/robotis_controller.h",
+        "src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py",
+        "src/ROBOTIS-OP3/op3_manager/src/op3_manager.cpp"
+      ],
+      "valid_reference_count": 14,
+      "verification_method": "Codex source review with snapshot hashes and printed line ranges",
+      "shared_hash_verified": false,
+      "reviewed_source_ranges": [
+        {
+          "path": "src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py",
+          "sha256": "0284fa9dfd7301950ffb6287b137b40165efdcc6a226c29d48e6497caedc311e",
+          "ranges": [
+            [
+              1,
+              78
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-OP3/op3_manager/src/op3_manager.cpp",
+          "sha256": "49a9f2d87e7fe4840774491f50c73238abe9d59f906affd5673cb9ab0e4ebcf6",
+          "ranges": [
+            [
+              61,
+              85
+            ],
+            [
+              248,
+              435
+            ],
+            [
+              480,
+              495
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-Framework/robotis_controller/include/robotis_controller/robotis_controller.h",
+          "sha256": "2532ef87ab4dc2e3b3ad23df9c2c4d432f0a25c897d50a60d17dd1f58c41ff80",
+          "ranges": [
+            [
+              60,
+              75
+            ],
+            [
+              125,
+              165
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-Framework-msgs/README.md",
+          "sha256": "8caad6824364fed4e0af0f66f74500ff80b13bd08ee82c1e9d4881f26c1ea11b",
+          "ranges": [
+            [
+              1,
+              19
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "task": 1059,
+      "robot": "Alphonse",
+      "stage": "guide",
+      "title": "Alphonse guide: Operation and troubleshooting",
+      "file": "Alphonse/focus-guide-operation.md",
+      "branch": "ALPHONSE_NEW_V2",
+      "commit": "adacde8f6e01e6439d170fb6bce025acc051bfa3",
+      "source_files_read": [
+        "scripts/op3_tmux/lib/health.sh",
+        "scripts/op3_tmux/lib/menu.sh",
+        "scripts/op3_tmux/lib/profiles.sh",
+        "scripts/op3_tmux/lib/start.sh",
+        "scripts/op3_tmux/main.sh",
+        "src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py"
+      ],
+      "valid_reference_count": 37,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": false
+    },
+    {
+      "task": 1060,
+      "robot": "Alphonse",
+      "stage": "guide",
+      "title": "Alphonse guide: Robot-specific settings, differences and review gaps",
+      "file": "Alphonse/focus-guide-differences.md",
+      "branch": "ALPHONSE_NEW_V2",
+      "commit": "adacde8f6e01e6439d170fb6bce025acc051bfa3",
+      "source_files_read": [
+        "README.md",
+        "src/ROBOTIS-OP3/op3_manager/config/offset.yaml",
+        "src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py",
+        "src/ROBOTIS-OP3/op3_walking_module/config/param.yaml"
+      ],
+      "valid_reference_count": 7,
+      "verification_method": "Codex source review with snapshot hashes and printed line ranges",
+      "shared_hash_verified": false,
+      "reviewed_source_ranges": [
+        {
+          "path": "src/ROBOTIS-OP3/op3_manager/config/offset.yaml",
+          "sha256": "1dff97982f93f2c50fbc88b6c64863793829918b561ae0083dc0636ec6edd751",
+          "ranges": [
+            [
+              1,
+              42
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-OP3/op3_walking_module/config/param.yaml",
+          "sha256": "607d99b38aabf3f8a464abbcea79b5982f0633915505400aa806bff80c575191",
+          "ranges": [
+            [
+              1,
+              85
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py",
+          "sha256": "0284fa9dfd7301950ffb6287b137b40165efdcc6a226c29d48e6497caedc311e",
+          "ranges": [
+            [
+              13,
+              78
+            ]
+          ]
+        },
+        {
+          "path": "README.md",
+          "sha256": "64fc09d05d0918d1ba250b35d2cfa85c10fa34a77bddc39110cb8bc149deeb4d",
+          "ranges": [
+            [
+              62,
+              83
+            ],
+            [
+              102,
+              119
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "task": 1061,
+      "robot": "Chronus",
+      "stage": "guide",
+      "title": "Chronus guide: Setup and prerequisites",
+      "file": "Chronus/focus-guide-setup.md",
+      "branch": "CHRONUS_NEW",
+      "commit": "54998e7c56e5b2cce4c1c533758c7d2f2cf7698b",
+      "source_files_read": [
+        "Dockerfile",
+        "README.md",
+        "docker-entrypoint.sh",
+        "script.sh",
+        "scripts/op3_docker.sh"
+      ],
+      "valid_reference_count": 32,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": false
+    },
+    {
+      "task": 1062,
+      "robot": "Chronus",
+      "stage": "guide",
+      "title": "Chronus guide: Architecture and interfaces",
+      "file": "Chronus/focus-guide-architecture.md",
+      "branch": "CHRONUS_NEW",
+      "commit": "54998e7c56e5b2cce4c1c533758c7d2f2cf7698b",
+      "source_files_read": [
+        "src/ROBOTIS-Framework-msgs/README.md",
+        "src/ROBOTIS-Framework/robotis_controller/include/robotis_controller/robotis_controller.h",
+        "src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py",
+        "src/ROBOTIS-OP3/op3_manager/src/op3_manager.cpp"
+      ],
+      "valid_reference_count": 15,
+      "verification_method": "Codex source review with snapshot hashes and printed line ranges",
+      "shared_hash_verified": false,
+      "reviewed_source_ranges": [
+        {
+          "path": "src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py",
+          "sha256": "d83fe99c8856d6d067ab58b6c28025be66671fdfbad7663f38234b963ea04a9d",
+          "ranges": [
+            [
+              165,
+              204
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-OP3/op3_manager/src/op3_manager.cpp",
+          "sha256": "c396ab0b750269ddc41dc4b23528e680aca38a7cc1d1a92576cebe3e3a695858",
+          "ranges": [
+            [
+              70,
+              80
+            ],
+            [
+              246,
+              449
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-Framework/robotis_controller/include/robotis_controller/robotis_controller.h",
+          "sha256": "e8a8e1a0565e7652a4f6ef0da244413a3567acdeaa83835678ab26eaebb0f6c0",
+          "ranges": [
+            [
+              60,
+              75
+            ],
+            [
+              120,
+              162
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-Framework-msgs/README.md",
+          "sha256": "8caad6824364fed4e0af0f66f74500ff80b13bd08ee82c1e9d4881f26c1ea11b",
+          "ranges": [
+            [
+              1,
+              19
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "task": 1063,
+      "robot": "Chronus",
+      "stage": "guide",
+      "title": "Chronus guide: Operation and troubleshooting",
+      "file": "Chronus/focus-guide-operation.md",
+      "branch": "CHRONUS_NEW",
+      "commit": "54998e7c56e5b2cce4c1c533758c7d2f2cf7698b",
+      "source_files_read": [
+        "scripts/op3_tmux/lib/health.sh",
+        "scripts/op3_tmux/lib/profiles.sh",
+        "scripts/op3_tmux/main.sh",
+        "src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py"
+      ],
+      "valid_reference_count": 10,
+      "verification_method": "Codex source review with snapshot hashes and printed line ranges",
+      "shared_hash_verified": false,
+      "reviewed_source_ranges": [
+        {
+          "path": "scripts/op3_tmux/main.sh",
+          "sha256": "04e8580bdfbf87516247ca7bef657e9ae9f138d040be64a0a54af5267cbc18e1",
+          "ranges": [
+            [
+              1,
+              41
+            ]
+          ]
+        },
+        {
+          "path": "scripts/op3_tmux/lib/profiles.sh",
+          "sha256": "6a8ef01157b386891f62bcad77f5016625dc356e77816c7d50c36c64ea06d54d",
+          "ranges": [
+            [
+              1,
+              67
+            ]
+          ]
+        },
+        {
+          "path": "scripts/op3_tmux/lib/health.sh",
+          "sha256": "d3041b4a82a27c9b2fac536db78c2e651187fee3ae6833a93365a2f66c3fbf04",
+          "ranges": [
+            [
+              1,
+              68
+            ],
+            [
+              130,
+              163
+            ],
+            [
+              209,
+              252
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py",
+          "sha256": "d83fe99c8856d6d067ab58b6c28025be66671fdfbad7663f38234b963ea04a9d",
+          "ranges": [
+            [
+              97,
+              164
+            ],
+            [
+              165,
+              196
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "task": 1064,
+      "robot": "Chronus",
+      "stage": "guide",
+      "title": "Chronus guide: Robot-specific settings, differences and review gaps",
+      "file": "Chronus/focus-guide-differences.md",
+      "branch": "CHRONUS_NEW",
+      "commit": "54998e7c56e5b2cce4c1c533758c7d2f2cf7698b",
+      "source_files_read": [
+        "README.md",
+        "src/ROBOTIS-OP3/op3_manager/config/offset.yaml",
+        "src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py",
+        "src/ROBOTIS-OP3/op3_walking_module/config/param.yaml"
+      ],
+      "valid_reference_count": 5,
+      "verification_method": "Codex source review with snapshot hashes and printed line ranges",
+      "shared_hash_verified": false,
+      "reviewed_source_ranges": [
+        {
+          "path": "src/ROBOTIS-OP3/op3_manager/config/offset.yaml",
+          "sha256": "1dff97982f93f2c50fbc88b6c64863793829918b561ae0083dc0636ec6edd751",
+          "ranges": [
+            [
+              1,
+              42
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-OP3/op3_walking_module/config/param.yaml",
+          "sha256": "a74702a2361c944fdde334b3170cf5248bfecb4cc629849769400e15c2d4708c",
+          "ranges": [
+            [
+              1,
+              22
+            ]
+          ]
+        },
+        {
+          "path": "src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py",
+          "sha256": "d83fe99c8856d6d067ab58b6c28025be66671fdfbad7663f38234b963ea04a9d",
+          "ranges": [
+            [
+              165,
+              204
+            ]
+          ]
+        },
+        {
+          "path": "README.md",
+          "sha256": "fcfe46c9d5fbbc3cf57e0850f3bdda0a4e488956f0bf1c1fdc1ed1d06137302d",
+          "ranges": [
+            [
+              54,
+              114
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "task": 1065,
+      "robot": "Orion",
+      "stage": "guide",
+      "title": "Orion guide: Setup and prerequisites",
+      "file": "Orion/focus-guide-setup.md",
+      "branch": "ORION_NEW",
+      "commit": "dba5be3fefbada854b8d6c11d6655f479b482574",
+      "source_files_read": [
+        "Dockerfile",
+        "README.md",
+        "docker-entrypoint.sh",
+        "script.sh",
+        "scripts/op3_docker.sh"
+      ],
+      "valid_reference_count": 52,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": false
+    },
+    {
+      "task": 1066,
+      "robot": "Orion",
+      "stage": "guide",
+      "title": "Orion guide: Architecture and interfaces",
+      "file": "Orion/focus-guide-architecture.md",
+      "branch": "ORION_NEW",
+      "commit": "dba5be3fefbada854b8d6c11d6655f479b482574",
+      "source_files_read": [
+        "src/ROBOTIS-Framework/robotis_controller/include/robotis_controller/robotis_controller.h",
+        "src/ROBOTIS-OP3/op3_manager/config/OP3.robot",
+        "src/ROBOTIS-OP3/op3_manager/config/dxl_init_OP3.yaml",
+        "src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py",
+        "src/ROBOTIS-OP3/op3_manager/src/op3_manager.cpp"
+      ],
+      "valid_reference_count": 21,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": false
+    },
+    {
+      "task": 1067,
+      "robot": "Orion",
+      "stage": "guide",
+      "title": "Orion guide: Operation and troubleshooting",
+      "file": "Orion/focus-guide-operation.md",
+      "branch": "ORION_NEW",
+      "commit": "dba5be3fefbada854b8d6c11d6655f479b482574",
+      "source_files_read": [
+        "scripts/op3_tmux/lib/args.sh",
+        "scripts/op3_tmux/lib/commands.sh",
+        "scripts/op3_tmux/lib/defaults.sh",
+        "scripts/op3_tmux/lib/health.sh",
+        "scripts/op3_tmux/lib/profiles.sh",
+        "scripts/op3_tmux/main.sh",
+        "src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py"
+      ],
+      "valid_reference_count": 40,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": false
+    },
+    {
+      "task": 1068,
+      "robot": "Orion",
+      "stage": "guide",
+      "title": "Orion guide: Robot-specific settings, differences and review gaps",
+      "file": "Orion/focus-guide-differences.md",
+      "branch": "ORION_NEW",
+      "commit": "dba5be3fefbada854b8d6c11d6655f479b482574",
+      "source_files_read": [
+        "README.md",
+        "scripts/action_page_fk.py",
+        "scripts/op3_ping.py",
+        "src/ROBOTIS-OP3/op3_manager/config/OP3.robot",
+        "src/ROBOTIS-OP3/op3_manager/config/offset.yaml",
+        "src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py",
+        "src/ROBOTIS-OP3/op3_walking_module/config/param.yaml"
+      ],
+      "valid_reference_count": 31,
+      "verification_method": "Original OpenCode source-path/read-call checks",
+      "shared_hash_verified": false
+    }
+  ]
+}

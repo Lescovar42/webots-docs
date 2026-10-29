@@ -1,0 +1,35 @@
+# Review notes and operating limits
+
+On 2026-10-29, Codex reviewed and rewrote all 13 remaining flagged focused drafts against printed source ranges and snapshot hashes.
+Five previously failed tasks had already received source-reviewed replacements. The remaining 28 reports retain their original automated source checks.
+All 46 reports pass their applicable citation checks. This is not a claim of exhaustive semantic or hardware validation.
+
+## Corrections in this review
+
+| Robot | Document | Checked references |
+|---|---|---:|
+| Alphonse | [Shared code: Workspace and package structure](/shared/workspace) | 6 |
+| Alphonse | [Shared code: Action and motion modules](/shared/actions) | 5 |
+| Alphonse | [Shared code: Ball and face detection](/shared/detectors) | 5 |
+| Alphonse | [Shared code: Studio and robot development tools](/shared/tools) | 5 |
+| Alphonse | [Alphonse: Environment, startup and launch differences](/alphonse/investigations/setup) | 9 |
+| Alphonse | [Alphonse: Other changed files and remaining uncertainty](/alphonse/investigations/other) | 6 |
+| Chronus | [Chronus: Other changed files and remaining uncertainty](/chronus/investigations/other) | 6 |
+| Orion | [Orion: Environment, startup and launch differences](/orion/investigations/setup) | 9 |
+| Orion | [Orion: Camera, perception and vision differences](/orion/investigations/vision) | 11 |
+| Orion | [Orion: Other changed files and remaining uncertainty](/orion/investigations/other) | 5 |
+| Alphonse | [Alphonse guide: Robot-specific settings, differences and review gaps](/alphonse/settings) | 7 |
+| Chronus | [Chronus guide: Operation and troubleshooting](/chronus/operation) | 10 |
+| Chronus | [Chronus guide: Robot-specific settings, differences and review gaps](/chronus/settings) | 5 |
+
+Malformed/unknown paths and citations to unread or empty files were corrected through reviewed replacements. Unverified package-wide claims were narrowed to inspected evidence.
+
+## Known issues requiring separate runtime work
+
+- Launch/node simulation parameter names differ in the reviewed Alphonse and Chronus paths; effective behavior is not verified.
+- Serial topology, action files, offsets, walking gains and UI/native-value conversion remain specific to each robot.
+- Some launch/helper paths can probe ports, rewrite device links, install dependencies or alter settings; documentation review did not execute them.
+- Orion vision source uses pixel-valued radii alongside normalized center coordinates; consumer integration and model quality remain untested.
+- README descriptions and historical benchmark/build statements are attributed to source and are not reproduced results.
+
+Original drafts and review evidence are backed up on the workstation. This archive omits those internal backup paths and the deferred historical audit.

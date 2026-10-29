@@ -1,0 +1,47 @@
+# Bascorro robot documentation — reviewed focused pass
+
+Documentation snapshot: 2026-10-29. Start with the robot guides below; shared subsystem cards are linked separately.
+
+**46 source/citation-checked reports: 16 shared cards, 18 robot-specific investigations and 12 guides.**
+The 13 flagged drafts were reviewed and rewritten; five earlier failures were recovered. Other checked drafts retain their original source checks.
+
+These are source-based drafts. No build, ROS launch, simulator, robot motion or hardware validation was performed.
+Source/path/hash checks do not establish full semantic correctness or safe operation. Read the open questions in each guide.
+
+[Review notes and known issues](/review-notes) · [Shared cards](/shared) · [Branch comparison](/branch-comparison)
+
+## Alphonse
+Branch `ALPHONSE_NEW_V2`, commit `adacde8f6e01e6439d170fb6bce025acc051bfa3`.
+
+- [Alphonse guide: Setup and prerequisites](/alphonse/setup)
+- [Alphonse guide: Architecture and interfaces](/alphonse/architecture)
+- [Alphonse guide: Operation and troubleshooting](/alphonse/operation)
+- [Alphonse guide: Robot-specific settings, differences and review gaps](/alphonse/settings)
+
+[All Alphonse investigations](/alphonse)
+
+## Chronus
+Branch `CHRONUS_NEW`, commit `54998e7c56e5b2cce4c1c533758c7d2f2cf7698b`.
+
+- [Chronus guide: Setup and prerequisites](/chronus/setup)
+- [Chronus guide: Architecture and interfaces](/chronus/architecture)
+- [Chronus guide: Operation and troubleshooting](/chronus/operation)
+- [Chronus guide: Robot-specific settings, differences and review gaps](/chronus/settings)
+
+[All Chronus investigations](/chronus)
+
+## Orion
+Branch `ORION_NEW`, commit `dba5be3fefbada854b8d6c11d6655f479b482574`.
+
+- [Orion guide: Setup and prerequisites](/orion/setup)
+- [Orion guide: Architecture and interfaces](/orion/architecture)
+- [Orion guide: Operation and troubleshooting](/orion/operation)
+- [Orion guide: Robot-specific settings, differences and review gaps](/orion/settings)
+
+[All Orion investigations](/orion)
+
+## Provenance and scope
+
+verification.json records source snapshots, read paths and available reviewer ranges. manifest.json contains SHA-256 hashes for every package file except the manifest itself.
+The 897 pending exhaustive-audit jobs remain deferred in the workstation; historical partial audit drafts are outside this focused snapshot.
+This ZIP contains documentation and provenance only. Repositories, models, databases, credentials and chat data are outside the package.

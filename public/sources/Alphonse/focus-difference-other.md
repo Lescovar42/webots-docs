@@ -1,0 +1,23 @@
+# Alphonse Studio, GUI and controller review notes
+
+This card reviews representative Alphonse files from the remaining-change inventory. It is not a complete behavioral comparison with the other robots. The former citation to a generated differences file has been replaced with direct source evidence and the separate [hash comparison](../BRANCH-COMPARISON.md).
+
+## Studio display values versus native parameters
+
+The Studio README describes a React/Tailwind/ROS 2 dashboard with telemetry, vision and tuning interfaces. Those are project descriptions, not tests of dashboard availability or safety controls. [source/src/bascorro_studio/README.md:L1-L28](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/src/bascorro_studio/README.md#L1-L28)
+
+Its Alphonse-specific walking section describes displaying offsets as deltas relative to a page-2 reference: display equals native ROS value minus a reference, and editing adds the reference back. It says Load/Apply/Save continue using native ROS values and warns that UI zero does not guarantee a physical pose. The underlying JavaScript and walking implementation were not inspected here, so this is a documented UI contract requiring implementation verification. Do not copy a displayed delta directly into native YAML. [source/src/bascorro_studio/README.md:L30-L69](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/src/bascorro_studio/README.md#L30-L69)
+
+## Initialization settings
+
+The sampled Dynamixel YAML contains per-joint gain and return-delay values, with a shutdown field in the inspected elbow entry. Comments explain the author's removal of selected EEPROM defaults to reduce startup bus reads. The quoted round-trip time and factory-default assumptions are historical source commentary, not measurements or motor-state verification performed here. [source/src/ROBOTIS-OP3/op3_manager/config/dxl_init_OP3.yaml:L1-L36](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/src/ROBOTIS-OP3/op3_manager/config/dxl_init_OP3.yaml#L1-L36)
+
+## GUI and controller contracts
+
+The reviewed GUI initialization creates publishers for per-joint module selection, a module preset and initial pose; it subscribes to status/current module information and creates a present-module service client. It then initializes demo/preview helpers and loads a `gui_config` path. These bindings do not establish that remote nodes are connected or that a GUI action succeeds. [source/src/ROBOTIS-OP3-Tools/op3_gui_demo/src/qnode.cpp:L57-L81](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/src/ROBOTIS-OP3-Tools/op3_gui_demo/src/qnode.cpp#L57-L81)
+
+The controller header declares a separate key vector for direct sync-write address/data-length pairs, with comments explaining why port-only reuse is insufficient. This is evidence of a design intent and class structure, not verification of the implementation's lookup logic. Its public API includes initialization, modules/timer controls, offsets and ROS callback/service methods. [source/src/ROBOTIS-Framework/robotis_controller/include/robotis_controller/robotis_controller.h:L60-L108](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/src/ROBOTIS-Framework/robotis_controller/include/robotis_controller/robotis_controller.h#L60-L108) [source/src/ROBOTIS-Framework/robotis_controller/include/robotis_controller/robotis_controller.h:L129-L156](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/src/ROBOTIS-Framework/robotis_controller/include/robotis_controller/robotis_controller.h#L129-L156)
+
+## Remaining uncertainty
+
+Studio backend routes, conversion code, full controller writes, persisted motor state and actual safety-control behavior remain untested. Generated inventories identify changed files; they do not establish changed runtime behavior. No calibration, EEPROM, motion file or robot setting was modified. See the [settings guide](focus-guide-differences.md) and [architecture guide](focus-guide-architecture.md) for branch-specific context.

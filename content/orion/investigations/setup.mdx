@@ -1,0 +1,25 @@
+# Orion environment and startup notes
+
+This card reviews `ORION_NEW` startup sources. Its README describes a Jetson/arm64 robot environment, which is distinct from the RTX 4090 research workstation hosting these documentation jobs. Build/runtime examples below are source references and were not executed.
+
+## Image selection and build context
+
+The README names `motion_webots_new-op3_ros2:latest` as the image built for this robot and attributes Python vision dependencies and arm64 adaptations to that image. It describes a historical older-image failure and an `OP3_IMAGE` override. Those history/performance statements were not independently reproduced. [source/README.md:L54-L74](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/README.md#L54-L74)
+
+The Dockerfile's base is `ros:humble-ros-base`, with pinned build arguments. Its later section points OpenVINO CMake/runtime lookup at a Python wheel location, copies sources/scripts under `/ros2_ws`, adds conditional workspace setup to bash initialization, and installs `/docker-entrypoint.sh`. These are literal build declarations; they do not prove that the image or wheel works on every architecture. [source/Dockerfile:L24-L39](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/Dockerfile#L24-L39) [source/Dockerfile:L252-L278](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/Dockerfile#L252-L278)
+
+## Container and environment contract
+
+The script constructs a detached container with init, restart policy, host networking/IPC, privileged device access, and workspace/entrypoint/bashrc mounts. Optional X11 configuration is forwarded when present. Unlike assuming a fixed domain from another robot, the sampled Orion code forwards `ROS_DOMAIN_ID` only when set in the host environment; comments attribute different domain choices to launcher profiles. [source/scripts/op3_docker.sh:L500-L549](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_docker.sh#L500-L549)
+
+After startup, it checks that the container is running and invokes its doctor routine. The shell helper wraps `docker exec` with the repository entrypoint; `down` removes the named container. Startup/doctor must therefore not be presented as a read-only status query. No handler was executed in this review. [source/scripts/op3_docker.sh:L551-L600](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_docker.sh#L551-L600)
+
+## Serial and workflow assumptions
+
+The README and script comments describe servo IDs and the sub-controller sharing a TTL bus on this Orion configuration, with runtime discovery of an openable USB serial device and an `OP3_DEVICE` override. That describes the authors' intended arrangement; actual scanning and robot-file rewriting implementations are outside this card's inspected ranges. Do not substitute Alphonse's split-port defaults. [source/README.md:L113-L126](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/README.md#L113-L126) [source/scripts/op3_docker.sh:L30-L45](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/scripts/op3_docker.sh#L30-L45)
+
+The README states that menu/compose entry points delegate to one container definition and explains prior device-binding and terminal-lifetime problems. The menu range reviewed here confirms relevant entry labels, not every delegation path. [source/README.md:L76-L111](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/README.md#L76-L111) [source/script.sh:L59-L85](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/script.sh#L59-L85)
+
+## Remaining verification
+
+Installed image contents, actual USB topology, model dependencies, effective ROS domain and diagnostic side effects remain deployment checks. A build timestamp or timing reported in a README is not a current benchmark. See the [Orion setup guide](/orion/setup), [architecture guide](/orion/architecture) and [branch comparison](/branch-comparison). No image was built, container launched or hardware accessed.

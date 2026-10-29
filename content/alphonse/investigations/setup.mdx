@@ -1,0 +1,27 @@
+# Alphonse environment and startup notes
+
+This review describes selected startup files in `ALPHONSE_NEW_V2`. It distinguishes executable settings from README explanations and does not claim that every difference from the other robots has been investigated. The previous reference to nonexistent `differs.md` is removed; use the [hash comparison](/branch-comparison) for the separate file-content inventory.
+
+## Image and workspace contract
+
+The README's build example is `sudo docker build -t op3-webots-ros2:humble .`. Its runtime section points to `scripts/op3_docker.sh` for container startup, shell access, diagnostics and shutdown. These commands were found in source but not executed during review. [source/README.md:L54-L83](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/README.md#L54-L83)
+
+The Dockerfile uses `ros:humble-ros-base`, with declared OpenCV/OpenVINO and tool-version arguments. That is a container build definition, not a host-OS requirement or confirmation of installed versions. It copies the workspace under `/ros2_ws`, installs the repository entrypoint and declares `bash` as the default command. [source/Dockerfile:L24-L39](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/Dockerfile#L24-L39) [source/Dockerfile:L233-L251](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/Dockerfile#L233-L251)
+
+## Container lifetime and mounts
+
+The reviewed `docker run` invocation is detached, uses an init process and `unless-stopped` restart policy, host networking/IPC, privileged mode, a `/dev` bind and the workspace bind. It overlays the source entrypoint and ends with `sleep infinity`. ROS domain/locality variables and optional X11/group settings are supplied by the script. These options describe how the source constructs a container; this workstation's Docker state was not inspected or changed. [source/scripts/op3_docker.sh:L514-L560](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_docker.sh#L514-L560)
+
+The README reports that old manual device bindings became stale after USB re-enumeration and that an interactive shell as container PID 1 caused terminal-dependent shutdown. The script comments describe the same historical rationale. Those are source explanations; no failure was reproduced here. [source/README.md:L85-L100](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/README.md#L85-L100) [source/scripts/op3_docker.sh:L5-L25](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_docker.sh#L5-L25)
+
+## Alphonse-specific boundary
+
+The README explicitly identifies the separate OpenCR USB arrangement and serial addresses as Alphonse-specific, and points to a robot-porting guide and serial-setup script. This review does not execute that setup script or establish its effects. Do not treat these addresses or that board workaround as a generic OP3 profile. [source/README.md:L62-L66](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/README.md#L62-L66)
+
+For “Package not found,” the README directs users into the container because its symlink install points under `/ros2_ws`; it also explains why a bare `docker exec` needs ROS environment setup. This is troubleshooting guidance from the snapshot, not proof that all package lookup errors have that cause. [source/README.md:L102-L128](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/README.md#L102-L128)
+
+The menu declares container start/shell/stop and health-related entries, but this sampled menu range is not a full audit of each handler. [source/script.sh:L61-L90](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/script.sh#L61-L90)
+
+## Unresolved checks
+
+Actual image availability, entrypoint behavior, ROS domain values, display access, serial identities and every diagnostic side effect still require deployment-specific verification. No container, robot manager or serial operation was started. The [setup guide](/alphonse/setup) and [architecture guide](/alphonse/architecture) provide the corresponding branch-specific navigation.

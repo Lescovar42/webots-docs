@@ -1,0 +1,64 @@
+# Robot documentation
+
+A Nextra and Next.js Markdown reader with a Tokyo Night dark theme. Includes the 57 documentation pages for Alphonse, Chronus, Orion, and shared systems, with navigation, page contents, code highlighting, and search.
+
+## Run locally
+
+Requires Node.js 22.12 or newer.
+
+```sh
+npm ci
+npm run dev
+```
+
+Open <http://127.0.0.1:4174>. To build and preview the static site:
+
+```sh
+npm run build
+npm run preview
+```
+
+The build exports the site to `out/`, then generates its Pagefind search index. No environment variables or backend services are required.
+
+`postinstall` applies a small compatibility fix to Nextra 4.6.1's Layout schema so it works with the patched Zod version pinned in `package.json`. Review `scripts/patch-nextra.mjs` when upgrading Nextra.
+
+## Update the documentation
+
+The 65 original snapshot files are retained unchanged in `public/sources/`. The generated Nextra pages live in `content/`, and `content-routes.json` maps source files to website routes.
+
+To import a replacement snapshot, copy its complete contents—including its matching `manifest.json`—into `public/sources/`, then run:
+
+```sh
+python scripts/import-docs.py
+npm run build
+```
+
+The importer uses Python's standard library. It verifies source hashes, converts Markdown to MDX, and rewrites local links. Commit the updated sources, generated content, route map, and validation report. Normal development and deployment use the committed content and do not require Python.
+
+The documentation records source and citation checks. It does not establish build, simulation, motion, or hardware validation; the original review notes preserve those limits.
+
+## Push to GitHub
+
+Create an empty GitHub repository, then run these commands from this project folder. Replace the account and repository placeholders. Skip `git init` if this folder is already a Git repository.
+
+```sh
+git init
+git add .
+git commit -m "Add robot documentation reader"
+git branch -M main
+git remote add origin https://github.com/YOUR_ACCOUNT/YOUR_REPOSITORY.git
+git push -u origin main
+```
+
+If an `origin` remote already exists, inspect it with `git remote -v` and use the intended repository instead of adding another remote. The included GitHub Actions workflow checks production builds on pushes and pull requests.
+
+## Deploy to Vercel
+
+In Vercel, create a project and import the GitHub repository. Use the project root as the root directory and Node.js 22 or newer. The included `vercel.json` sets:
+
+- Framework: Next.js
+- Install command: `npm ci`
+- Build command: `npm run build`
+- Output directory: `out`
+
+No environment variables are needed. Vercel's Git integration builds subsequent pushes and provides preview deployments for pull requests.

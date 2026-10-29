@@ -1,0 +1,191 @@
+# Branch comparison (source hashes)
+
+Baseline: Alphonse / ALPHONSE_NEW_V2. These counts cover the filtered text snapshots only.
+A changed file is not proof of changed runtime behavior. Calibration/hardware assumptions are not transferred.
+
+| Robot | Identical files | Changed files | Added files | Missing files |
+|---|---:|---:|---:|---:|
+| Alphonse | 956 | 0 | 0 | 0 |
+| Chronus | 804 | 87 | 5 | 65 |
+| Orion | 802 | 86 | 6 | 68 |
+
+## Chronus: changed text files
+
+- `Dockerfile`
+- `PANDUAN_PARAMETER_WALKING.md`
+- `README.md`
+- `docker-compose.yml`
+- `docker-entrypoint.sh`
+- `script.sh`
+- `scripts/op3_docker.sh`
+- `scripts/op3_ping.py`
+- `scripts/op3_tmux/lib/actions.sh`
+- `scripts/op3_tmux/lib/args.sh`
+- `scripts/op3_tmux/lib/commands.sh`
+- `scripts/op3_tmux/lib/defaults.sh`
+- `scripts/op3_tmux/lib/health.sh`
+- `scripts/op3_tmux/lib/profiles.sh`
+- `scripts/op3_tmux/lib/selection.sh`
+- `src/ROBOTIS-Framework/robotis_controller/include/robotis_controller/robotis_controller.h`
+- `src/ROBOTIS-Framework/robotis_controller/src/robotis_controller/robotis_controller.cpp`
+- `src/ROBOTIS-Framework/robotis_device/src/robotis_device/robot.cpp`
+- `src/ROBOTIS-OP3-Demo/op3_ball_detector/CMakeLists.txt`
+- `src/ROBOTIS-OP3-Demo/op3_ball_detector/README_YOLO.md`
+- `src/ROBOTIS-OP3-Demo/op3_ball_detector/config/camera_param.yaml`
+- `src/ROBOTIS-OP3-Demo/op3_ball_detector/config/yolo_ball_detector_onnx_params.yaml`
+- `src/ROBOTIS-OP3-Demo/op3_ball_detector/config/yolo_ball_detector_openvino_params.yaml`
+- `src/ROBOTIS-OP3-Demo/op3_ball_detector/config/yolo_ball_detector_params.yaml`
+- `src/ROBOTIS-OP3-Demo/op3_ball_detector/launch/yolo_ball_detector_openvino.launch.py`
+- `src/ROBOTIS-OP3-Demo/op3_ball_detector/package.xml`
+- `src/ROBOTIS-OP3-Demo/op3_ball_detector/requirements_yolo.txt`
+- `src/ROBOTIS-OP3-Demo/op3_ball_detector/scripts/yolo_ball_detector.py`
+- `src/ROBOTIS-OP3-Demo/op3_demo/CMakeLists.txt`
+- `src/ROBOTIS-OP3-Demo/op3_demo/include/op3_demo/ball_follower.h`
+- `src/ROBOTIS-OP3-Demo/op3_demo/include/op3_demo/ball_tracker.h`
+- `src/ROBOTIS-OP3-Demo/op3_demo/include/op3_demo/op_demo.h`
+- `src/ROBOTIS-OP3-Demo/op3_demo/include/op3_demo/soccer_demo.h`
+- `src/ROBOTIS-OP3-Demo/op3_demo/launch/demo.launch.xml`
+- `src/ROBOTIS-OP3-Demo/op3_demo/launch/demo_yolo.launch.xml`
+- `src/ROBOTIS-OP3-Demo/op3_demo/package.xml`
+- `src/ROBOTIS-OP3-Demo/op3_demo/src/demo_node.cpp`
+- `src/ROBOTIS-OP3-Demo/op3_demo/src/soccer/ball_follower.cpp`
+- `src/ROBOTIS-OP3-Demo/op3_demo/src/soccer/ball_tracker.cpp`
+- `src/ROBOTIS-OP3-Demo/op3_demo/src/soccer/soccer_demo.cpp`
+- `src/ROBOTIS-OP3-Tools/op3_action_editor/scripts/action_yaml.py`
+- `src/ROBOTIS-OP3-Tools/op3_action_editor/scripts/executor.py`
+- `src/ROBOTIS-OP3-Tools/op3_action_editor/scripts/webots_executor.py`
+- `src/ROBOTIS-OP3-Tools/op3_action_editor/src/main.cpp`
+- `src/ROBOTIS-OP3-Tools/op3_gui_demo/config/gui_motion.yaml`
+- `src/ROBOTIS-OP3-Tools/op3_gui_demo/include/op3_gui_demo/main_window.hpp`
+- `src/ROBOTIS-OP3-Tools/op3_gui_demo/include/op3_gui_demo/qnode.hpp`
+- `src/ROBOTIS-OP3-Tools/op3_gui_demo/src/qnode.cpp`
+- `src/ROBOTIS-OP3-msgs/op3_walking_module_msgs/msg/WalkingParam.msg`
+- `src/ROBOTIS-OP3/op3_action_module/src/action_module.cpp`
+- `src/ROBOTIS-OP3/op3_base_module/data/ini_pose.yaml`
+- `src/ROBOTIS-OP3/op3_base_module/src/base_module.cpp`
+- `src/ROBOTIS-OP3/op3_direct_control_module/src/direct_control_module.cpp`
+- `src/ROBOTIS-OP3/op3_head_control_module/include/op3_head_control_module/head_control_module.h`
+- `src/ROBOTIS-OP3/op3_head_control_module/src/head_control_module.cpp`
+- `src/ROBOTIS-OP3/op3_kinematics_dynamics/src/op3_kinematics_dynamics.cpp`
+- `src/ROBOTIS-OP3/op3_manager/config/OP3.robot`
+- `src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py`
+- `src/ROBOTIS-OP3/op3_manager/src/op3_manager.cpp`
+- `src/ROBOTIS-OP3/op3_tuning_module/src/tuning_module.cpp`
+- `src/ROBOTIS-OP3/op3_walking_module/config/param.yaml`
+- `src/ROBOTIS-OP3/op3_walking_module/include/op3_walking_module/op3_walking_module.h`
+- `src/ROBOTIS-OP3/op3_walking_module/src/op3_walking_module.cpp`
+- `src/ROBOTIS-OP3/open_cr_module/include/open_cr_module/open_cr_module.h`
+- `src/ROBOTIS-OP3/open_cr_module/src/open_cr_module.cpp`
+- `src/bascorro_studio/README.md`
+- `src/bascorro_studio/bascorro_studio/apply_node.py`
+- `src/bascorro_studio/bascorro_studio/studio_agent.py`
+- `src/bascorro_studio/package.xml`
+- `src/bascorro_studio/web/package.json`
+- `src/bascorro_studio/web/src/ActionEditor.jsx`
+- `src/bascorro_studio/web/src/App.jsx`
+- `src/bascorro_studio/web/src/ChartPage.jsx`
+- `src/bascorro_studio/web/src/TuningPage.jsx`
+- `src/bascorro_studio/web/src/main.jsx`
+- `src/bascorro_studio/web/src/walkingParams.js`
+- `src/bascorro_studio/web/vite.config.js`
+- `src/op3_ball_localization/QUICK_REFERENCE.md`
+- `src/op3_ball_localization/config/ball_localizer.yaml`
+- `src/op3_ball_localization/config/head_tracking.yaml`
+- `src/op3_ball_localization/op3_ball_localization/ball_localizer_node.py`
+- `src/op3_ball_localization/op3_ball_localization/head_tracking_node.py`
+- `src/op3_joy_teleop/README.md`
+- `src/op3_joy_teleop/config/op3_joy_teleop.yaml`
+- `src/op3_joy_teleop/op3_joy_teleop/teleop_node.py`
+- `src/op3_yolo_vision/config/yolo.yaml`
+- `src/op3_yolo_vision/src/yolo_detector.cpp`
+
+## Orion: changed text files
+
+- `Dockerfile`
+- `README.md`
+- `docker-compose.yml`
+- `docker-entrypoint.sh`
+- `script.sh`
+- `scripts/bascorro_studio.sh`
+- `scripts/op3_docker.sh`
+- `scripts/op3_ping.py`
+- `scripts/op3_tmux/lib/actions.sh`
+- `scripts/op3_tmux/lib/args.sh`
+- `scripts/op3_tmux/lib/commands.sh`
+- `scripts/op3_tmux/lib/defaults.sh`
+- `scripts/op3_tmux/lib/health.sh`
+- `scripts/op3_tmux/lib/profiles.sh`
+- `scripts/op3_tmux/lib/selection.sh`
+- `scripts/op3_tmux/main.sh`
+- `src/ROBOTIS-Framework/robotis_controller/include/robotis_controller/robotis_controller.h`
+- `src/ROBOTIS-Framework/robotis_controller/src/robotis_controller/robotis_controller.cpp`
+- `src/ROBOTIS-Framework/robotis_device/src/robotis_device/robot.cpp`
+- `src/ROBOTIS-OP3-Demo/op3_ball_detector/CMakeLists.txt`
+- `src/ROBOTIS-OP3-Demo/op3_ball_detector/README_YOLO.md`
+- `src/ROBOTIS-OP3-Demo/op3_ball_detector/config/camera_param.yaml`
+- `src/ROBOTIS-OP3-Demo/op3_ball_detector/config/yolo_ball_detector_onnx_params.yaml`
+- `src/ROBOTIS-OP3-Demo/op3_ball_detector/config/yolo_ball_detector_openvino_params.yaml`
+- `src/ROBOTIS-OP3-Demo/op3_ball_detector/config/yolo_ball_detector_params.yaml`
+- `src/ROBOTIS-OP3-Demo/op3_ball_detector/launch/yolo_ball_detector_openvino.launch.py`
+- `src/ROBOTIS-OP3-Demo/op3_ball_detector/package.xml`
+- `src/ROBOTIS-OP3-Demo/op3_ball_detector/scripts/yolo_ball_detector.py`
+- `src/ROBOTIS-OP3-Demo/op3_demo/CMakeLists.txt`
+- `src/ROBOTIS-OP3-Demo/op3_demo/include/op3_demo/ball_follower.h`
+- `src/ROBOTIS-OP3-Demo/op3_demo/include/op3_demo/ball_tracker.h`
+- `src/ROBOTIS-OP3-Demo/op3_demo/include/op3_demo/op_demo.h`
+- `src/ROBOTIS-OP3-Demo/op3_demo/include/op3_demo/soccer_demo.h`
+- `src/ROBOTIS-OP3-Demo/op3_demo/launch/demo.launch.xml`
+- `src/ROBOTIS-OP3-Demo/op3_demo/launch/demo_yolo.launch.xml`
+- `src/ROBOTIS-OP3-Demo/op3_demo/package.xml`
+- `src/ROBOTIS-OP3-Demo/op3_demo/src/demo_node.cpp`
+- `src/ROBOTIS-OP3-Demo/op3_demo/src/soccer/ball_follower.cpp`
+- `src/ROBOTIS-OP3-Demo/op3_demo/src/soccer/ball_tracker.cpp`
+- `src/ROBOTIS-OP3-Demo/op3_demo/src/soccer/soccer_demo.cpp`
+- `src/ROBOTIS-OP3-Tools/op3_action_editor/scripts/action_yaml.py`
+- `src/ROBOTIS-OP3-Tools/op3_action_editor/scripts/executor.py`
+- `src/ROBOTIS-OP3-Tools/op3_action_editor/scripts/webots_executor.py`
+- `src/ROBOTIS-OP3-Tools/op3_action_editor/src/main.cpp`
+- `src/ROBOTIS-OP3-Tools/op3_gui_demo/config/gui_motion.yaml`
+- `src/ROBOTIS-OP3-Tools/op3_gui_demo/include/op3_gui_demo/main_window.hpp`
+- `src/ROBOTIS-OP3-Tools/op3_gui_demo/include/op3_gui_demo/qnode.hpp`
+- `src/ROBOTIS-OP3-Tools/op3_gui_demo/src/qnode.cpp`
+- `src/ROBOTIS-OP3-msgs/op3_walking_module_msgs/msg/WalkingParam.msg`
+- `src/ROBOTIS-OP3/op3_action_module/src/action_module.cpp`
+- `src/ROBOTIS-OP3/op3_base_module/data/ini_pose.yaml`
+- `src/ROBOTIS-OP3/op3_base_module/src/base_module.cpp`
+- `src/ROBOTIS-OP3/op3_direct_control_module/src/direct_control_module.cpp`
+- `src/ROBOTIS-OP3/op3_head_control_module/include/op3_head_control_module/head_control_module.h`
+- `src/ROBOTIS-OP3/op3_head_control_module/src/head_control_module.cpp`
+- `src/ROBOTIS-OP3/op3_kinematics_dynamics/src/op3_kinematics_dynamics.cpp`
+- `src/ROBOTIS-OP3/op3_manager/config/OP3.robot`
+- `src/ROBOTIS-OP3/op3_manager/config/dxl_init_OP3.yaml`
+- `src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py`
+- `src/ROBOTIS-OP3/op3_manager/src/op3_manager.cpp`
+- `src/ROBOTIS-OP3/op3_tuning_module/src/tuning_module.cpp`
+- `src/ROBOTIS-OP3/op3_walking_module/config/param.yaml`
+- `src/ROBOTIS-OP3/op3_walking_module/include/op3_walking_module/op3_walking_module.h`
+- `src/ROBOTIS-OP3/op3_walking_module/src/op3_walking_module.cpp`
+- `src/ROBOTIS-OP3/open_cr_module/include/open_cr_module/open_cr_module.h`
+- `src/ROBOTIS-OP3/open_cr_module/src/open_cr_module.cpp`
+- `src/bascorro_studio/README.md`
+- `src/bascorro_studio/bascorro_studio/apply_node.py`
+- `src/bascorro_studio/bascorro_studio/studio_agent.py`
+- `src/bascorro_studio/package.xml`
+- `src/bascorro_studio/web/package.json`
+- `src/bascorro_studio/web/src/ActionEditor.jsx`
+- `src/bascorro_studio/web/src/App.jsx`
+- `src/bascorro_studio/web/src/ChartPage.jsx`
+- `src/bascorro_studio/web/src/TuningPage.jsx`
+- `src/bascorro_studio/web/src/main.jsx`
+- `src/bascorro_studio/web/vite.config.js`
+- `src/op3_ball_localization/config/ball_localizer.yaml`
+- `src/op3_ball_localization/config/head_tracking.yaml`
+- `src/op3_ball_localization/op3_ball_localization/ball_localizer_node.py`
+- `src/op3_ball_localization/op3_ball_localization/head_tracking_node.py`
+- `src/op3_joy_teleop/README.md`
+- `src/op3_joy_teleop/config/op3_joy_teleop.yaml`
+- `src/op3_joy_teleop/op3_joy_teleop/teleop_node.py`
+- `src/op3_yolo_vision/config/yolo.yaml`
+- `src/op3_yolo_vision/src/yolo_detector.cpp`
+
+Full added/missing/identical lists are in branch-comparison.json.

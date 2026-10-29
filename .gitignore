@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.vercel/
+.openai/
+.next/
+out/
+public/_pagefind/
+.sites-runtime/
+*.log
+.env
+.env.*
+!.env.example
+__pycache__/
+.DS_Store
+Thumbs.db

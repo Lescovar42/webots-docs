@@ -1,0 +1,25 @@
+# Orion Studio, initialization and controller review notes
+
+This card samples Orion's Studio README, Dynamixel initialization YAML, GUI bindings and controller header. It replaces claims that depended on unread launcher/editor/manager implementations. File-content differences are catalogued separately in the [branch comparison](/branch-comparison); they are not proof of different runtime behavior.
+
+## Studio and configuration evidence
+
+The README describes telemetry, vision, walking controls, action editing and logs, with build/dependency examples. It names safety controls and motion-editing capabilities, but this review does not certify those controls or reproduce the documented startup procedure. The backend and UI implementation remain outside this card. [source/src/bascorro_studio/README.md:L1-L72](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/src/bascorro_studio/README.md#L1-L72)
+
+The inspected YAML entries explicitly include maximum/minimum position fields, operating mode, gains and return-delay values for named joints. They are intended configuration data, not readings of actual motor registers or a guarantee that settings are safe for a particular joint. Only the sampled initial entries were reviewed; no initialization file was applied. [source/src/ROBOTIS-OP3/op3_manager/config/dxl_init_OP3.yaml:L1-L40](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/src/ROBOTIS-OP3/op3_manager/config/dxl_init_OP3.yaml#L1-L40)
+
+## GUI source bindings
+
+The reviewed GUI initialization publishes joint-module assignments, module-preset strings and action page numbers. It subscribes to status/current module state, creates a present-module client, initializes demo/preview helpers, and resolves a configurable GUI YAML path. No action-page meaning or successful hardware operation follows from the presence of a publisher. [source/src/ROBOTIS-OP3-Tools/op3_gui_demo/src/qnode.cpp:L57-L81](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/src/ROBOTIS-OP3-Tools/op3_gui_demo/src/qnode.cpp#L57-L81)
+
+## Controller API and serial ownership
+
+The controller header declares thread/mode/module state, bulk-read maps and several sync-write maps. These are interface and storage declarations, not timing guarantees or proof that every map is used correctly. [source/src/ROBOTIS-Framework/robotis_controller/include/robotis_controller/robotis_controller.h:L60-L110](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/src/ROBOTIS-Framework/robotis_controller/include/robotis_controller/robotis_controller.h#L60-L110)
+
+It also declares `findPortUser(device_name)`, with a comment describing detection of another process holding a serial port and the single-master bus assumption. A declaration and comment do not prove that every launcher or editor calls this guard. Inspect the relevant calling path before assuming that concurrent manager/editor use is prevented. [source/src/ROBOTIS-Framework/robotis_controller/include/robotis_controller/robotis_controller.h:L130-L157](https://github.com/ProgramBascorro/motion_webots/blob/dba5be3fefbada854b8d6c11d6655f479b482574/src/ROBOTIS-Framework/robotis_controller/include/robotis_controller/robotis_controller.h#L130-L157)
+
+## Open issues and operating limits
+
+Actual port ownership, startup ordering, controller implementation, calibration and UI-to-manager action routing remain deployment checks. The previously cited `bascorro_studio.sh`, action-web/test-terminal scripts, editor `main.cpp` and manager implementation are not used as evidence in this replacement because they were outside the reviewed scope.
+
+No serial device, torque operation, action editor, UI control or robot process was run. Consult Orion's [architecture](/orion/architecture), [setup](/orion/setup) and [settings](/orion/settings) guides for additional source navigation; their operating examples remain untested.

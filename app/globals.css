@@ -1,0 +1,36 @@
+/* Tokyo Night: https://github.com/tokyo-night/tokyo-night-vscode-theme */
+:root{--nextra-primary-hue:221deg;--nextra-primary-saturation:85%;--nextra-primary-lightness:72%;--nextra-bg:26,27,38;--nextra-content-width:92rem;color-scheme:dark}
+html.dark,html.dark body{background:#1a1b26;color:#c0caf5;font-family:Inter,"Segoe UI",Arial,sans-serif}
+::selection{background:#364a82;color:#e0e6ff}
+.reader-title{font-size:14px;font-weight:600;letter-spacing:-.15px;color:#c0caf5}
+.nextra-navbar{background:#16161e!important}
+.nextra-navbar-blur{background:#16161e!important;box-shadow:none!important;border-color:#292e42!important}
+.nextra-sidebar,.nextra-sidebar-footer{background:#16161e!important;border-color:#292e42}
+.nextra-sidebar a,.nextra-sidebar button{font-size:12px}
+.nextra-border{border-color:#292e42!important}
+html.dark{--x-color-neutral-200:#c0caf5;--x-color-neutral-300:#c0caf5;--x-color-neutral-400:#a9b1d6;--x-color-neutral-500:#787c99;--x-color-neutral-600:#565f89;--x-color-neutral-700:#414868;--x-color-neutral-800:#292e42;--x-color-neutral-900:#16161e;--x-color-gray-200:#c0caf5;--x-color-gray-400:#a9b1d6;--x-color-gray-800:#292e42;--x-color-gray-900:#16161e}
+.nextra-toc{font-size:11px}
+article{font-size:14px;line-height:1.85;color:#c0caf5}
+article h1{font-size:32px!important;line-height:1.25!important;letter-spacing:-.75px!important;color:#d5ddfa!important;font-weight:600!important}
+article h2{font-size:22px!important;font-weight:600!important;letter-spacing:-.4px;color:#d5ddfa!important;border-color:#292e42!important}
+article h3{font-size:18px!important;font-weight:600!important;color:#d5ddfa!important}
+article strong{color:#d5ddfa}
+article a{color:#7aa2f7!important;text-decoration-color:#414f75!important;text-underline-offset:3px}
+article a:hover{color:#a9c1ff!important;text-decoration-color:#7aa2f7!important}
+article :not(pre)>code{background:#24283b!important;color:#bb9af7!important;border-color:#343b58!important;font-size:.86em}
+article pre{background:#16161e!important;border:1px solid #292e42!important;border-radius:7px!important;font-size:12px!important;line-height:1.7!important}
+article pre code{background:transparent!important;border:0!important}
+article blockquote{background:#1f2335!important;border-left-color:#565f89!important;color:#a9b1d6!important;padding:1px 18px!important}
+article table{font-size:12px!important;line-height:1.7!important}
+article th{background:#1f2335!important;color:#c0caf5!important;font-weight:600!important}
+article tr{background:transparent!important;border-color:#292e42!important}
+article tbody tr:nth-child(even){background:#1c1e2c!important}
+article td,article th{border-color:#292e42!important;padding:10px 13px!important}
+.page-tools{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 28px;color:#787c99;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:10px;line-height:1.6}
+.page-tools>span{overflow-wrap:anywhere}
+.page-tools>div{display:flex;align-items:center;gap:16px;flex-shrink:0;font-family:Inter,"Segoe UI",Arial,sans-serif}
+.page-tools button,.page-tools a{font-size:10px;color:#a9b1d6!important;text-decoration:none!important}
+.page-tools button:hover,.page-tools a:hover{color:#7aa2f7!important}
+html.dark input[type=search]{background:#16161e;color:#c0caf5;border-color:#343b58}
+@media(max-width:600px){article{font-size:13px;line-height:1.85}article h1{font-size:26px!important;letter-spacing:-.5px!important}article h2{font-size:20px!important}.reader-title{font-size:12px}.page-tools{flex-wrap:wrap;margin-bottom:22px;gap:10px}.page-tools>div{gap:13px}}
+@media print{nav,aside,.page-tools{display:none!important}html.dark,html.dark body,article{background:white!important;color:black!important}article h1,article h2,article h3,article strong{color:black!important}}

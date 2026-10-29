@@ -1,0 +1,25 @@
+> Shared file-content analysis, using the Alphonse snapshot. Robot-specific runtime conditions require separate review.
+
+# Shared package and build declarations
+
+This card reviews four matching files from the three pinned robot snapshots, using Alphonse for canonical links. It describes selected package contracts, not a complete workspace dependency graph or proof of equal robot behavior. Earlier claims about uninspected packages have been removed.
+
+## Two build-system examples
+
+`op3_yolo_vision` declares a format-3 manifest, version `0.0.0`, an `ament_cmake` build type and dependencies including `rclcpp`, sensor/geometry messages, `soccer_msgs` and `ament_index_cpp`. Its description calls it a 2D bounding-box detector package. These are manifest declarations, not an inference benchmark or a complete dependency inventory of its C++ implementation. [source/src/op3_yolo_vision/package.xml:L1-L24](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/src/op3_yolo_vision/package.xml#L1-L24)
+
+`soccer_localization` instead declares `ament_python`. Its manifest describes field-line UKF localization and lists Python ROS, geometry/navigation/sensor messages, TF, visualization, `soccer_common`, `soccer_msgs`, NumPy, SciPy and FilterPy dependencies. The description does not establish localization accuracy or confirm that those dependencies are installed. [source/src/soccer_localization/package.xml:L1-L26](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/src/soccer_localization/package.xml#L1-L26)
+
+These examples establish that the reviewed snapshot contains both CMake and Python package declarations. They do not establish a complete build order, a successful colcon build, or the contents of every nested package directory. Package format 3 is observed in the inspected manifests only. [source/src/op3_yolo_vision/package.xml:L1-L24](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/src/op3_yolo_vision/package.xml#L1-L24) [source/src/soccer_localization/package.xml:L1-L26](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/src/soccer_localization/package.xml#L1-L26)
+
+## Robot-description installation contract
+
+`alponse_description` retains that exact source identifier despite the public robot name Alphonse. Its manifest declares `ament_cmake`, visualization/launch runtime dependencies, and `architecture_independent`. The latter is a manifest marker, not a test of all installed scripts on every platform. [source/src/alponse_description/package.xml:L1-L22](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/src/alponse_description/package.xml#L1-L22)
+
+The CMake file installs `config`, `launch`, `meshes`, `mujoco`, `rviz` and `urdf` directories into the package share directory. It also installs `scripts/view_alponse_mujoco` under the package's `lib` directory. This proves the intended install layout, not the validity of model files or a working viewer. [source/src/alponse_description/CMakeLists.txt:L1-L21](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/src/alponse_description/CMakeLists.txt#L1-L21)
+
+## Limits and next steps
+
+Use these files to locate package metadata and installed resources, then inspect the relevant launch and implementation cards. No full-workspace package count is asserted here, and no build behavior is inferred for the previously uninspected face-detection or SBPL files. The shared hash check applies only to the reviewed files; configuration and runtime context remain robot-specific.
+
+No dependency installation, build, viewer, simulator or robot command was executed. The [shared-card index](README.md) and each robot's architecture guide provide navigation to the remaining source investigations.

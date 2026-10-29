@@ -1,0 +1,325 @@
+{
+  "algorithm": "SHA-256",
+  "files": [
+    {
+      "path": "Alphonse/DIFFERENCES.md",
+      "bytes": 9462,
+      "sha256": "ad4992b838840c0b74fc0e74d9427669c2f3570e9a2ee6265fdc2b4fd484df81"
+    },
+    {
+      "path": "Alphonse/README.md",
+      "bytes": 1247,
+      "sha256": "fcf2e41d5adb6877dfe7fae413c38aada27e6ed93f9c60babb2925670c4a6e3e"
+    },
+    {
+      "path": "Alphonse/focus-difference-hardware.md",
+      "bytes": 10421,
+      "sha256": "516220d3d6fb68457fde9755582c219d12a622cc5b94d1c375436111137c7819"
+    },
+    {
+      "path": "Alphonse/focus-difference-motion.md",
+      "bytes": 15346,
+      "sha256": "81438443d72d7bda5d9c7f1d853db3d9b7124bf0e2e49d2e6f0e413d7b0cd082"
+    },
+    {
+      "path": "Alphonse/focus-difference-navigation.md",
+      "bytes": 3457,
+      "sha256": "2c2b7e5f523d816fbfba5f7202075669143c2e740cb7987dfc8be9e7e981b297"
+    },
+    {
+      "path": "Alphonse/focus-difference-other.md",
+      "bytes": 4206,
+      "sha256": "d7c199678021b3fd6c9976ce965cbf69771506d0b7a6de7dc6664724a76eb90a"
+    },
+    {
+      "path": "Alphonse/focus-difference-setup.md",
+      "bytes": 4385,
+      "sha256": "34de205026a4ea7bd90dc115503031c6dcf62cb118ef82f6851123951fb091d2"
+    },
+    {
+      "path": "Alphonse/focus-difference-vision.md",
+      "bytes": 18129,
+      "sha256": "f2334777a43e99f5b27661245eb384a3c18bf0d476b71202ecd45ef138a22dfb"
+    },
+    {
+      "path": "Alphonse/focus-guide-architecture.md",
+      "bytes": 7440,
+      "sha256": "197ea8e6a265a087b016cad59aefc015b98dc2f8e3c0cca6fe867bc534ccd085"
+    },
+    {
+      "path": "Alphonse/focus-guide-differences.md",
+      "bytes": 4631,
+      "sha256": "c541a0d252d912e9406123c2aef59487254996bad8d38d032e127e92d863fe9e"
+    },
+    {
+      "path": "Alphonse/focus-guide-operation.md",
+      "bytes": 14453,
+      "sha256": "64ef1b82cf92c2f1035bdda7e8e94fb92cf186ff9b7a0340a8d67214581a41f9"
+    },
+    {
+      "path": "Alphonse/focus-guide-setup.md",
+      "bytes": 18233,
+      "sha256": "74154d0e1e6fbab15ac98292576dcc91e781c6e7f82a2d6e680d68be442de8fb"
+    },
+    {
+      "path": "Alphonse/inventory.json",
+      "bytes": 277969,
+      "sha256": "2ee3667be68f55b0c5d02c39ebe0dcaa3bb6b608cd6b654e469db99be5c8664e"
+    },
+    {
+      "path": "BRANCH-COMPARISON.md",
+      "bytes": 10149,
+      "sha256": "038c0c5d000493b8929f76fbb3125d0ff8847969c9b0fdb19ffe9574892d0054"
+    },
+    {
+      "path": "Chronus/DIFFERENCES.md",
+      "bytes": 8999,
+      "sha256": "59b6eb3c868ca50e9d7f64cdb85cdbe9ab444b299d92ba9b284c6ecc52c44438"
+    },
+    {
+      "path": "Chronus/README.md",
+      "bytes": 1232,
+      "sha256": "7afcc01235f506409e2d4439048fd41d2a8f0d7c20a1c113b3bde61ae2ab1ba4"
+    },
+    {
+      "path": "Chronus/focus-difference-hardware.md",
+      "bytes": 12473,
+      "sha256": "8b34c2023a75a7400f3b5c395a7fa100f95b002982cbca79a5508787d55acfc9"
+    },
+    {
+      "path": "Chronus/focus-difference-motion.md",
+      "bytes": 11429,
+      "sha256": "2fe6f81a0382c164664219bf7fbd11d7451738ba9e5b25bfbaefa34365cbcfa1"
+    },
+    {
+      "path": "Chronus/focus-difference-navigation.md",
+      "bytes": 10108,
+      "sha256": "1fca0f05ab4d6608afe1b313cfc60ed2d38a83fcc17046afb4d5317a1f4089f9"
+    },
+    {
+      "path": "Chronus/focus-difference-other.md",
+      "bytes": 4088,
+      "sha256": "d141148ce0b604f163fcfd4f9dfbabc60d0a3ff6661177ca46fb5dd58031f565"
+    },
+    {
+      "path": "Chronus/focus-difference-setup.md",
+      "bytes": 10629,
+      "sha256": "a15f572758e12d6dc8f442f108eb416f2439ed32d082bf6e403e4e0afd36b547"
+    },
+    {
+      "path": "Chronus/focus-difference-vision.md",
+      "bytes": 12433,
+      "sha256": "04660ead53ca08ca832f3d891d7ea0a1d96bb22591d033f8e0b17946cda3cf9f"
+    },
+    {
+      "path": "Chronus/focus-guide-architecture.md",
+      "bytes": 7650,
+      "sha256": "d71b83426d155defa097372da058547f27bf52c0f9206ef9b0d52cc38e0ac3e6"
+    },
+    {
+      "path": "Chronus/focus-guide-differences.md",
+      "bytes": 4099,
+      "sha256": "b1dba9c5ca6e94303f98d5a23f2e402d8adbd8ff0e2662ec125773348e98e5b9"
+    },
+    {
+      "path": "Chronus/focus-guide-operation.md",
+      "bytes": 5201,
+      "sha256": "cc81d0e88c29cd946d54b5b115c7d108dc1c4cbc3895c45766e553688c523b06"
+    },
+    {
+      "path": "Chronus/focus-guide-setup.md",
+      "bytes": 12162,
+      "sha256": "50733bced0c26411fdd3558c2037287093fe4c2f8ccad2068d3dc053a4154823"
+    },
+    {
+      "path": "Chronus/inventory.json",
+      "bytes": 264319,
+      "sha256": "6a2c68e732db13f0dcddee750fc344c79d2ee0080d67594d6925f9a5c0c121f0"
+    },
+    {
+      "path": "FOCUSED-GUIDES.md",
+      "bytes": 66,
+      "sha256": "971c8eff7d95c398036795843e504889c88f6e8ad7efec0fd7eabd45523c032a"
+    },
+    {
+      "path": "Orion/DIFFERENCES.md",
+      "bytes": 9064,
+      "sha256": "b4afdf2848f07345bf6146083e5c4f6e3328d31e8394556a48dd1933e0249a05"
+    },
+    {
+      "path": "Orion/README.md",
+      "bytes": 1208,
+      "sha256": "5ec93af429b656be8ac417cff0be3684684d29d3caac4cce460245fa3e7b1555"
+    },
+    {
+      "path": "Orion/focus-difference-hardware.md",
+      "bytes": 13102,
+      "sha256": "81040bfce8221fffa679dd3f237565f4e9e46d5ee96a7190c016d73497a82ca7"
+    },
+    {
+      "path": "Orion/focus-difference-motion.md",
+      "bytes": 10442,
+      "sha256": "a97dfc2aa69bc90c3e1c38297835d67572a2b260e7dff770f15d488b88837d98"
+    },
+    {
+      "path": "Orion/focus-difference-navigation.md",
+      "bytes": 15494,
+      "sha256": "b51ec42697e591749a784b4a3fe6e24ca37aee35bbbf3b1a4e9cfaf6f1092ad7"
+    },
+    {
+      "path": "Orion/focus-difference-other.md",
+      "bytes": 4058,
+      "sha256": "b8be2a22778381abf58a22361534e4d14515274e58e74fb60a6d31ee6504613d"
+    },
+    {
+      "path": "Orion/focus-difference-setup.md",
+      "bytes": 4333,
+      "sha256": "dc35089117311be526d3eef65323b5714d065d63462ed70db822f6bc0632e5a5"
+    },
+    {
+      "path": "Orion/focus-difference-vision.md",
+      "bytes": 5547,
+      "sha256": "54ba59f0776df15f6593a4399f958fd577e60824aa7055a30526902192df9bd8"
+    },
+    {
+      "path": "Orion/focus-guide-architecture.md",
+      "bytes": 12213,
+      "sha256": "c43133924889d3c825f03fdd17e809e8f3a6166078b9281ed611d64e8daa4071"
+    },
+    {
+      "path": "Orion/focus-guide-differences.md",
+      "bytes": 13500,
+      "sha256": "663e289d34b393867098635d4ced876308265c156b61dda6587626b42bd2891c"
+    },
+    {
+      "path": "Orion/focus-guide-operation.md",
+      "bytes": 13558,
+      "sha256": "2ed9d3e60ed9ab92c60af2feef3b5a1524053afbfdfeaaffb8403c327f1ea6d5"
+    },
+    {
+      "path": "Orion/focus-guide-setup.md",
+      "bytes": 16323,
+      "sha256": "8969ea9073335b21d64dc50ac69e9cc68bf62d26180b75a5c06efb6af024c783"
+    },
+    {
+      "path": "Orion/inventory.json",
+      "bytes": 263932,
+      "sha256": "b72c297a5cd7aa1df632dd8e8a40fce993f1c2e84cd237e6a52196575f50f046"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2719,
+      "sha256": "5f818590e6fe2a64538a9c8d4191e70ae28893df7aae857d9381c0e2391d6850"
+    },
+    {
+      "path": "REVIEW-NOTES.md",
+      "bytes": 2948,
+      "sha256": "88b6653aa70e925bb64c0e2a4d5a21eb4c9618aa9034cfebb5d72acf496d563d"
+    },
+    {
+      "path": "Shared/README.md",
+      "bytes": 1348,
+      "sha256": "69a9b7b86544a10f52278c2052e411fd895e248ca31f3ffa13d59a98ee0afe76"
+    },
+    {
+      "path": "Shared/focus-shared-actions.md",
+      "bytes": 4184,
+      "sha256": "905bfd2482773496c419549acd237164b24e7a58971d78e4e58e8c11ca32ec0e"
+    },
+    {
+      "path": "Shared/focus-shared-demo.md",
+      "bytes": 5161,
+      "sha256": "f790182228796e0ac1ba961a97cef531242e46f4925a7b6643bf2427a7c408e7"
+    },
+    {
+      "path": "Shared/focus-shared-detectors.md",
+      "bytes": 3903,
+      "sha256": "753fca74229da855cecc1fb8c0c15bbd610d7c2522937f64ac4a8ac08bb33a4e"
+    },
+    {
+      "path": "Shared/focus-shared-footsteps.md",
+      "bytes": 11377,
+      "sha256": "328450dc5d1c62bd10016d03a177015664a7953b1e6b6a3c293e2c49fa0a3b36"
+    },
+    {
+      "path": "Shared/focus-shared-framework.md",
+      "bytes": 11654,
+      "sha256": "84160dcb4c519529081f276f95f1bcfe9c0da0f2a22806bfd7085987d5354ef0"
+    },
+    {
+      "path": "Shared/focus-shared-kinematics.md",
+      "bytes": 11185,
+      "sha256": "0aee0eedad4612fe97a9fc7fc91b657ae39a72f6b2da4d7ca4f9e5ddd2b3d558"
+    },
+    {
+      "path": "Shared/focus-shared-localization.md",
+      "bytes": 15722,
+      "sha256": "bb5d4bf8de42cdb60c113042af973c19770dfdd66defc5feac84b5f9f0361854"
+    },
+    {
+      "path": "Shared/focus-shared-manager.md",
+      "bytes": 16235,
+      "sha256": "769d84ec7975d59568f0764151e35430ea661c18c343e3cc9fb01ae1cb7ae97e"
+    },
+    {
+      "path": "Shared/focus-shared-messages.md",
+      "bytes": 9325,
+      "sha256": "b0175f21e5d6a51968be4da27bd114b1182d2ecba3819754e5b040a4cd96ef45"
+    },
+    {
+      "path": "Shared/focus-shared-object-localization.md",
+      "bytes": 5335,
+      "sha256": "6ada897db18d0bc539991a78d21ec50f589e96f4a6720c251b788fffd21f1eb7"
+    },
+    {
+      "path": "Shared/focus-shared-teleop.md",
+      "bytes": 9487,
+      "sha256": "8f45f81b516bfb832e12215cad5b6d030ad620ec643e74cb89222e4ec8a7e160"
+    },
+    {
+      "path": "Shared/focus-shared-tools.md",
+      "bytes": 3963,
+      "sha256": "69beaf41ffdaea50121fb4a6b4b92795e6c92abbbbe15ab7fd3f1a3ab9dba764"
+    },
+    {
+      "path": "Shared/focus-shared-walking.md",
+      "bytes": 8020,
+      "sha256": "d6a9fa9a5402fd8a6b95beb021dda8ba2d942ca6f80624167da85c0c77e94cf8"
+    },
+    {
+      "path": "Shared/focus-shared-webots.md",
+      "bytes": 12116,
+      "sha256": "9c04df7b6bdf319b29b19ac1f09900b017445688c7372f818b67355f2b3cc36b"
+    },
+    {
+      "path": "Shared/focus-shared-workspace.md",
+      "bytes": 3932,
+      "sha256": "2e9a0887151a887a1da5a54a09935733d7f3d7df3f3ee8c77ceebf818b69baba"
+    },
+    {
+      "path": "Shared/focus-shared-yolo.md",
+      "bytes": 4726,
+      "sha256": "f6b5e4f5e1f0b0031d7a0ea3a4d9f3731ddc71e85f6b50cab8e59045e73fab8d"
+    },
+    {
+      "path": "Shared/source-hashes.json",
+      "bytes": 106484,
+      "sha256": "691ba4ad2070cb0fe9fcbc63d412568404e0c2964cf064e3c838ebc0cc75708e"
+    },
+    {
+      "path": "branch-comparison.json",
+      "bytes": 188783,
+      "sha256": "13f16f45abcdfeea5f78bf19b8c481e5699b117f58f01572fdeee2694dd757b8"
+    },
+    {
+      "path": "inventory-summary.json",
+      "bytes": 761,
+      "sha256": "ada594e30fa3d0e8d454d4a80d84f05df6c9c61087166fcbc53b85d800c87606"
+    },
+    {
+      "path": "verification.json",
+      "bytes": 57816,
+      "sha256": "d57dc900d1dcee61f4bbfc547670a0a45e9e85e0280a358742ba3615715c4919"
+    }
+  ]
+}

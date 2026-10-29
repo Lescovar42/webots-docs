@@ -1,0 +1,125 @@
+# Alphonse guide: Operation and troubleshooting
+
+Branch: `ALPHONSE_NEW_V2`; commit: `adacde8f6e01e6439d170fb6bce025acc051bfa3`.
+
+> **Scope note.** This draft covers the tmux-launcher startup sequence, the two operational profiles (Webots simulation vs real robot), key configuration parameters drawn from `op3_manager.launch.py`, and the health-check / port-conflict troubleshooting path inside `lib/health.sh`. It does not cover individual ROS node internals. Architecture details are delegated to shared cards: [Manager and hardware bringup][mgr], [Walking and balance modules][walk], [Teleoperation][teleop], [Simulation][sim], [Localization][loc].
+
+[mgr]: /shared/manager
+[walk]: /shared/walking
+[teleop]: /shared/teleop
+[sim]: /shared/webots
+[loc]: /shared/localization
+
+---
+
+## 1. Quick start (selected components)
+
+### 1.1 Pre-flight prerequisites
+
+| Check | Source reference |
+|-------|-----------------|
+| `tmux` installed | [source/scripts/op3_tmux/lib/health.sh:L1-L3](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_tmux/lib/health.sh#L1-L3), [source/scripts/op3_tmux/lib/health.sh:L5-L23](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_tmux/lib/health.sh#L5-L23) |
+| ROS 2 in PATH (`ros2` command) | [source/scripts/op3_tmux/lib/health.sh:L1](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_tmux/lib/health.sh#L1), [source/scripts/op3_tmux/lib/health.sh:L260-L263](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_tmux/lib/health.sh#L260-L263) |
+| Workspace built and `setup.bash` discoverable under `$WS/install/` | [source/scripts/op3_tmux/lib/health.sh:L100-L190](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_tmux/lib/health.sh#L100-L190) |
+| No stale process holding the Dynamixel serial ports (U2D2, OpenCR) | [source/scripts/op3_tmux/lib/health.sh:L271-L280](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_tmux/lib/health.sh#L271-L280) |
+
+The launcher auto-detects the ROS setup script (`setup.bash` / `setup.zsh` / `local_setup.*`) in `$WS/install/` with a preference order that depends on the current shell; see [source/scripts/op3_tmux/lib/health.sh:L100-L132](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_tmux/lib/health.sh#L100-L132).
+
+### 1.2 Profiles: Webots vs real robot
+
+The launcher exposes two profiles in `profiles.sh` [source/scripts/op3_tmux/lib/profiles.sh:L1-L65](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_tmux/lib/profiles.sh#L1-L65):
+
+| Property | `webots` | `real_robot` |
+|----------|----------|--------------|
+| ROS domain ID | `0` | `1` |
+| Manager launch | `op3_simulation.launch.py` | `op3_manager` node with explicit serial-device parameters |
+| Startup delay (Webots → manager) | 4.0 s | 1.0 s |
+| Component stagger (non-manager panes) | 0.0 s (disabled) | 5.0 s |
+
+The stagger on the real-robot profile is intentional: `op3_manager` needs approximately 3.5 s for its Dynamixel initialization, and co-starting CPU-heavy vision or web-studio panes inflates that to ~8 s with large variance [source/scripts/op3_tmux/lib/profiles.sh:L32-L34](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_tmux/lib/profiles.sh#L32-L34). The stagger delays all non-manager, non-Webots panes by `STACK_STAGGER_SEC` seconds [source/scripts/op3_tmux/lib/start.sh:L59-L74](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_tmux/lib/start.sh#L59-L74).
+
+**Untested command** (from source, not executed):
+
+```bash
+source/scripts/op3_tmux/main.sh    # interactive gum menu; choose profile + components
+```
+
+### 1.3 Component selection
+
+The `start_stack` function accepts 15 optional component flags and maps each to a tmux pane [source/scripts/op3_tmux/lib/start.sh:L1-L17](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_tmux/lib/start.sh#L1-L17). Available components include: Webots, manager (op3_manager), offset tuner, teleop, Foxglove Bridge, tools, rqt image view, YOLO vision, soccer localization, ball head tracking, ball localizer, action editor, action web (Studio), vision lab, and demo. In dry-run mode the launcher prints every wrapped command without launching [source/scripts/op3_tmux/lib/start.sh:L76-L99](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_tmux/lib/start.sh#L76-L99).
+
+---
+
+## 2. Key configuration (op3_manager)
+
+The launch file `op3_manager.launch.py` declares the following significant parameters [source/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py:L13-L79](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py#L13-L79):
+
+- **`device_name`** — Serial path to the Dynamixel servo bus (U2D2). Default: `/dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FT3WKHM6-if00-port0` [source/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py:L27](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py#L27). Used by `buttonHandlerCallback` for long-press torque-off on servo ID 1 [source/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py:L20-L22](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py#L20-L22).
+
+- **`sub_controller_device`** — Serial path to the OpenCR sub-controller (ID 200). Default: `/dev/serial/by-id/usb-ROBOTIS_OpenCR_Virtual_ComPort_in_FS_Mode_FFFFFFFEFFFF-if00` [source/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py:L28](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py#L28). Used for power-on DXL and LED control. The launch file comments explicitly state that the TTL bus interface on this board variant is dead, so ID 200 answers only via its micro-USB port [source/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py:L23-L26](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py#L23-L26).
+
+- **`boot_init_page`** — Action page played at boot. `2` = WALKING_READY (default), `0` = legacy ini_pose path via base_module, `<0` = skip [source/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py:L42-L48](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py#L42-L48).
+
+- **`angle_unit`** — Head control speed limit in deg/s, default 35.0 [source/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py:L57-L64](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py#L57-L64).
+
+- **Action file** — Default action binary is `ALPHONSE.bin` [source/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py:L19](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py#L19), which matches the profile default [source/scripts/op3_tmux/lib/profiles.sh:L43-L44](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_tmux/lib/profiles.sh#L43-L44).
+
+---
+
+## 3. Troubleshooting
+
+### 3.1 Port held by stale process
+
+The health check invokes `op3_port_users.py --quiet` to detect whether any leftover manager/node process is still holding a serial port [source/scripts/op3_tmux/lib/health.sh:L273-L280](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_tmux/lib/health.sh#L273-L280). This is critical because the Dynamixel SDK opens serial devices without `TIOCEXCL`, meaning a second manager will not receive "port busy" but will silently get "first bulk read fail!!" errors. If the guard triggers:
+
+```
+scripts/op3_port_users.py --kill
+```
+
+> **Untested command** — found at [source/scripts/op3_tmux/lib/health.sh:L278](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_tmux/lib/health.sh#L278) but not executed.
+
+### 3.2 Dynamixel init errors ("Torque on DXLs! [RxPacketError]" / "Fail to control LED")
+
+These originate from the dual-port wiring documented in the launch file: `device_name` and `sub_controller_device` must point to **different** physical ports. If both are bound to the same path, the servo bus (U2D2) and the OpenCR controller (ID 200) collide and one side silently fails [source/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py:L24-L26](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py#L24-L26).
+
+**Unknown:** The exact USB-by-id strings are hardware-specific and may differ per robot. The defaults in the launch file serve as anchors only for the robot used during development [source/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py:L27-L28](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py#L27-L28).
+
+### 3.3 Workspace not built
+
+If `ros2 pkg prefix op3_joy_teleop` fails inside the health check, the launcher suggests:
+
+```
+colcon build --packages-select op3_joy_teleop
+source install/setup.bash
+```
+
+(source: [source/scripts/op3_tmux/lib/health.sh:L282-L287](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_tmux/lib/health.sh#L282-L287)) — **untested command**.
+
+### 3.4 Shell runner mismatch
+
+The launcher auto-detects the shell runner (`bash -lc` or `zsh -lc`) based on the current terminal and a saved preference file at `${HOME}/.config/op3-stack/prefs.sh` [source/scripts/op3_tmux/lib/health.sh:L32-L57](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_tmux/lib/health.sh#L32-L57). If the detected setup script is `.zsh` but `zsh` is not available, it attempts to fall back to `.bash` [source/scripts/op3_tmux/lib/health.sh:L192-L207](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_tmux/lib/health.sh#L192-L207). A clear error is raised if fallback is impossible [source/scripts/op3_tmux/lib/health.sh:L253](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_tmux/lib/health.sh#L253).
+
+### 3.5 Environment variable overrides
+
+Every command in every profile can be overridden by setting the corresponding `OP3_*_CMD` environment variable before invoking `main.sh` [source/scripts/op3_tmux/lib/profiles.sh:L47-L64](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_tmux/lib/profiles.sh#L47-L64). For example, `OP3_MANAGER_CMD` replaces the entire manager launch string.
+
+---
+
+## 4. Untested operating commands (derived from source, not executed)
+
+| Command / action | Source |
+|---|---|
+| `source/scripts/op3_tmux/main.sh` — interactive launcher | [source/scripts/op3_tmux/main.sh:L39-L41](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_tmux/main.sh#L39-L41) |
+| `scripts/op3_port_users.py --kill` — kill stale serial-port holders | [source/scripts/op3_tmux/lib/health.sh:L278](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_tmux/lib/health.sh#L278) |
+| `colcon build --packages-select op3_joy_teleop` — rebuild missing pkg | [source/scripts/op3_tmux/lib/health.sh:L285](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_tmux/lib/health.sh#L285) |
+
+All commands are **untested operating suggestions** derived from source inspection. They have not been executed in this workspace.
+
+---
+
+## 5. Known gaps and conflicts
+
+- **Serial device IDs are hardware-bound.** The default port paths in `op3_manager.launch.py` [source/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py:L27-L28](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/src/ROBOTIS-OP3/op3_manager/launch/op3_manager.launch.py#L27-L28) and `profiles.sh` [source/scripts/op3_tmux/lib/profiles.sh:L22](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_tmux/lib/profiles.sh#L22) are copied from a specific robot's USB enumeration. Do not transfer these to another robot's calibration or startup without verifying the actual `/dev/serial/by-id/` entries.
+- **Menu implementation detail:** `lib/menu.sh` contains only a comment (`# Gum is required; no fallback menu.`) [source/scripts/op3_tmux/lib/menu.sh:L1](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_tmux/lib/menu.sh#L1). The actual gum-based menu logic lives in other `lib/` files not fully inspected here.
+- **`start.sh` is partial.** Lines 161–250 covering additional component dispatch logic and tmux pane teardown were not read due to budget constraints. The teardown/restart path at [source/scripts/op3_tmux/lib/start.sh:L103-L106](https://github.com/ProgramBascorro/motion_webots/blob/adacde8f6e01e6439d170fb6bce025acc051bfa3/scripts/op3_tmux/lib/start.sh#L103-L106) is visible but unverified for edge cases.
+- **Shared cards used:** Manager/bringup [mgr], Walking [walk], Teleop [teleop], Simulation [sim]. Action/motion card is needs-review and was not used for verified claims. Camera/YOLO, ball localization, and demo cards failed and remain unexamined.
